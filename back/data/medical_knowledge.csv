@@ -1,0 +1,84 @@
+Disease,Symptoms,Description,Treatment,Risk_Factors
+
+Drug Reaction,"rash, swelling, shortness of breath, fever","Adverse response to medication due to allergy or intolerance.","Discontinue drug, antihistamines, corticosteroids, epinephrine in severe cases.","History of allergies, polypharmacy, genetic sensitivity"
+
+Malaria,"fever, chills, headache, sweating, fatigue","Parasitic infection transmitted by Anopheles mosquitoes.","Antimalarials (e.g., artemisinin), supportive care, antipyretics.","Travel to endemic area, lacking prophylaxis, mosquito exposure"
+
+Allergy,"sneezing, itchy eyes, runny nose, hives, swelling","Hypersensitive immune reaction to allergens.","Antihistamines, nasal corticosteroids, allergen avoidance.","Family history, exposure to pollen/pets, asthma"
+
+Hypothyroidism,"fatigue, weight gain, cold intolerance, dry skin, constipation","Underactive thyroid gland producing insufficient hormones.","Levothyroxine replacement therapy.","Autoimmune disease, iodine deficiency, radiation therapy"
+Psoriasis,"red scaly plaques, itching, nail pitting, joint pain","Chronic autoimmune skin disorder with rapid cell turnover.","Topical steroids, phototherapy, systemic biologics.","Family history, stress, infections, medications"
+
+GERD,"heartburn, acid regurgitation, chest pain, hoarseness, cough","Stomach acid flows back into esophagus causing irritation.","Proton pump inhibitors, lifestyle modifications.","Obesity, hiatal hernia, smoking, lying down after eating"
+
+Chronic cholestasis,"jaundice, itching, dark urine, pale stools, fatigue","Impaired bile flow leading to liver damage.","Ursodeoxycholic acid, bile acid binders, vitamin supplements.","Female gender, pregnancy, gallstones, liver disease"
+
+Hepatitis A,"fever, fatigue, jaundice, abdominal pain, nausea","Viral liver infection spread via fecal-oral route.","Supportive care, hydration, rest; vaccine prevention.","Travel to endemic area, poor sanitation, crowded living"
+
+Osteoarthritis,"joint pain, stiffness, reduced motion, swelling, crepitus","Degenerative cartilage joint disease.","NSAIDs, physical therapy, weight loss, joint replacement.","Age, obesity, joint injury, repetitive stress"
+
+(vertigo) Paroxysmal Positional Vertigo,"brief spinning sensations, nausea, imbalance, triggered by head movements","Inner ear crystals dislodged causing dizziness.","Epley maneuver, vestibular rehab, antiemetics.","Age, head trauma, prior vestibular disease"
+
+Hypoglycemia,"sweating, trembling, hunger, headache, confusion","Low blood glucose often due to insulin or missed meals.","Consume fast-acting carbs, adjust medications.","Diabetes treatment, skipped meals, excessive exercise"
+
+Acne,"pimples, blackheads, oily skin, nodules, scarring","Inflammatory skin condition affecting follicles.","Topical retinoids, benzoyl peroxide, antibiotics, isotretinoin.","Hormonal changes, genetics, oily skin, diet"
+
+Diabetes,"increased thirst, frequent urination, fatigue, blurred vision, slow wounds","Chronic high blood sugar due to insulin issues.","Insulin/oral hypoglycemics, diet, exercise.","Family history, obesity, sedentary lifestyle, age"
+
+Impetigo,"honey-colored crusts, red sores, itching, oozing, swollen lymph nodes","Contagious bacterial skin infection.","Topical/systemic antibiotics, hygiene measures.","Close contact, young age, poor hygiene"
+
+Hypertension,"headache, dizziness, nosebleeds, blurred vision, chest pain","Chronic elevated blood pressure increasing cardiovascular risk.","Lifestyle changes, antihypertensives.","Obesity, salt intake, sedentary lifestyle, stress"
+
+Peptic ulcer disease,"abdominal pain, bloating, nausea, heartburn, bleeding","Lesions in stomach/duodenum lining.","PPIs, H. pylori eradication, avoid NSAIDs.","H. pylori infection, NSAIDs, smoking, stress"
+
+Dimorphic hemorrhoids(piles),"anal itching, bleeding, pain during bowel movements, swelling","Swollen rectal veins with dual internal & external components.","Fiber, laxatives, topical creams, surgery for severe cases.","Constipation, pregnancy, straining, obesity"
+
+Common Cold,"runny nose, sore throat, cough, congestion, sneezing","Viral upper respiratory infection.","Rest, fluids, decongestants, analgesics.","Seasonal exposure, close contact, weak immunity"
+
+Chicken pox,"fever, itchy rash, blisters, fatigue, headache","Varicella-zoster virus causing systemic rash.","Calamine lotion, antihistamines, antivirals in adults.","Unvaccinated status, exposure to infected individuals"
+
+Cervical spondylosis,"neck pain, stiffness, numbness, tingling in arms, weakness","Degenerative changes in cervical spine causing nerve compression.","Physical therapy, NSAIDs, cervical collar, surgery if severe.","Age, posture, repetitive neck strain, smoking"
+
+Hyperthyroidism,"weight loss, tremor, heat intolerance, palpitations, anxiety","Excess thyroid hormone production.","Antithyroid drugs, radioiodine, surgery.","Graves disease, iodine excess, family history"
+
+Urinary tract infection,"painful urination, frequent urge, cloudy urine, lower abdominal pain, burning","Bacterial infection of urinary tract.","Antibiotics, hydration, urinary analgesics.","Female anatomy, sexual activity, catheter use, poor hygiene"
+
+Varicose veins,"leg swelling, aching, visible twisted veins, itching, heaviness","Enlarged veins due to valve failure.","Compression stockings, exercise, sclerotherapy, surgery.","Age, female gender, obesity, prolonged standing"
+
+AIDS,"weight loss, fever, night sweats, recurrent infections, lymphadenopathy","Advanced HIV disease causing immune system failure.","Antiretroviral therapy lifelong.","Unprotected sex, needle sharing, vertical transmission"
+
+Paralysis (brain hemorrhage),"sudden headache, weakness, numbness, slurred speech, confusion","Bleeding in the brain leading to neurological deficits.","Urgent neurosurgery, blood pressure control, rehab.","Hypertension, aneurysm, anticoagulant use, age"
+
+Typhoid,"fever, abdominal pain, diarrhea or constipation, rash, headache","Salmonella Typhi infection via contaminated food/water.","Antibiotics (azithromycin, ceftriaxone), hydration.","Poor sanitation, travel, contaminated water"
+
+Hepatitis B,"jaundice, fatigue, dark urine, abdominal pain, joint pain","Viral liver infection transmitted sexually/bloodborne.","Antivirals, interferon, vaccine prevention.","Unprotected sex, IV drug use, unscreened blood transfusion"
+
+Fungal infection,"itching, rash, scaling, redness, blisters","Dermatophyte or yeast infection on skin/nails.","Topical/oral antifungals, hygiene.","Moisture, tight clothing, immunosuppression"
+
+Hepatitis C,"fatigue, jaundice, dark urine, abdominal pain, itching","Bloodborne viral infection of liver.","Direct-acting antivirals, liver monitoring.","IV drug use, blood transfusions, unsafe healthcare"
+
+Migraine,"throbbing headache, nausea, light sensitivity, aura, fatigue","Neurological headache disorder often recurrent.","NSAIDs, triptans, anti-nausea meds, lifestyle changes.","Family history, hormonal changes, stress, triggers"
+
+Bronchial Asthma,"wheeze, shortness of breath, chest tightness, cough, nighttime symptoms","Chronic airway inflammation causing bronchoconstriction.","Inhaled steroids, bronchodilators, avoidance of triggers.","Allergies, family history, smoking, pollution"
+
+Alcoholic hepatitis,"jaundice, fever, abdominal pain, nausea, elevated liver enzymes","Inflammation of liver from chronic alcohol use.","Abstinence, nutrition, steroids in severe cases.","Heavy alcohol use, malnutrition, obesity"
+
+Jaundice,"yellowing skin/eyes, dark urine, pale stool, itching, abdominal pain","Hyperbilirubinemia due to liver dysfunction.","Treat underlying cause, hydration, rest.","Liver disease, bile duct obstruction, hemolysis"
+
+Hepatitis E,"jaundice, fever, nausea, fatigue, abdominal pain","Fecal-oral viral liver infection self-limited.","Supportive care, avoid alcohol, hospitalize if pregnant.","Contaminated water, travel, poor sanitation"
+
+Dengue,"fever, joint pain, rash, headache, bleeding tendency","Mosquito-borne viral infection with severe pain.","Fluids, paracetamol, hospitalization if hemorrhagic.","Mosquito exposure, prior dengue infection"
+
+Hepatitis D,"jaundice, fatigue, abdominal pain, nausea, joint pain","Delta virus coinfecting with hepatitis B.","Manage HBV infection, antivirals.","HBV infection, IV drug use, poor healthcare conditions"
+
+Heart attack,"chest pain, shortness of breath, sweating, nausea, pain radiating to arm","Myocardial infarction due to blocked coronary artery.","Aspirin, PCI, thrombolytics, beta-blockers.","Smoking, hypertension, cholesterol, diabetes"
+
+Pneumonia,"fever, cough, chest pain, shortness of breath, sputum","Infection of lung parenchyma bacterial/viral.","Antibiotics, oxygen, fluids, rest.","Age extremes, smoking, chronic illness, immunosuppression"
+
+Arthritis,"joint pain, stiffness, swelling, reduced motion, warmth","General term for joint inflammation (OA, RA).","NSAIDs, physical therapy, DMARDs for RA.","Age, obesity, autoimmunity, joint injury"
+
+Gastroenteritis,"diarrhea, vomiting, abdominal cramps, fever, dehydration","Stomach/intestine inflammation due to infection/toxin.","Rehydration, antiemetics, antibiotics if bacterial.","Contaminated food/water, daycare, travel"
+
+Tuberculosis,"night sweats, fever, weight loss, cough, hemoptysis","Mycobacterial lung infection; can affect other organs.","RIPE therapy (rifampin, isoniazid, pyrazinamide, ethambutol).","Close contact, HIV, crowded living, immunosuppression"
+
+ 

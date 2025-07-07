@@ -1,0 +1,23 @@
+C:\Users\TanayShah\AppData\Local\Programs\Python\Python39\python.exe -m venv scispacy_env
+
+scispacy_env\Scripts\activate
+
+python --version
+
+python -m pip install --upgrade pip
+
+pip install spacy==3.7.4
+
+pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz
+
+pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bc5cdr_md-0.5.4.tar.gz
+
+pip install ipykernel
+
+pip install rapidfuzz pandas fuzzywuzzy
+
+pip install python-levenshtein
+
+
+gemini api key : AIzaSyD1iUaHZjJuB7fVP-Z_KwIc-5E87PLNZCw
+
