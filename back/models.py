@@ -1,12 +1,15 @@
-# backend/models.py
+# models.py
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Dict, Optional
 
 class DiagnosisRequest(BaseModel):
-    symptoms_text: str
-    age: int
-    gender: str
-    followup_answers: Optional[List[str]] = []
+    symptoms: str
+    extra_input: Optional[str] = ""
+    followup_answers: Dict[str, List[str]]
+    age: Optional[int] = None
+    gender: Optional[str] = None
+    country: Optional[str] = None
+
 
 class DiagnosisResponse(BaseModel):
     disease: str

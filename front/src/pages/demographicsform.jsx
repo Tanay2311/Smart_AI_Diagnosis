@@ -9,7 +9,6 @@ export default function DemographicsForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Store locally or in context (later)
     localStorage.setItem("user_demographics", JSON.stringify({ age, gender, country }));
     navigate("/assistant");
   };

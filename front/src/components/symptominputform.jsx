@@ -5,10 +5,11 @@ export default function SymptomInputForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.trim()) {
-      onSubmit(input.trim());
-      setInput("");
+    if (!input.trim()) {
+      alert("Please enter your symptoms.");
+      return;
     }
+    onSubmit(input);  
   };
 
   return (

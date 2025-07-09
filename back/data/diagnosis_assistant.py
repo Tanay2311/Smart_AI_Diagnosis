@@ -14,11 +14,12 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 
 # -------------------- Load Environment --------------------
-load_dotenv()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+dotenv_path = os.path.join(BASE_DIR, ".env")
+load_dotenv(dotenv_path)
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # -------------------- Configs --------------------
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(BASE_DIR, "medical_knowledge_clean.csv")
 SYMPTOM_QA_PATH = os.path.join(BASE_DIR, "symptom_follow_up_questions.csv")
 PERSIST_DIR = os.path.join(BASE_DIR, "rag_index")
@@ -46,53 +47,261 @@ symptom_vocab = build_symptom_vocab(df)
 
 # -------------------- Synonym Map --------------------
 synonym_map = {
-    # General
-    "tired": "fatigue", "exhausted": "fatigue", "worn out": "fatigue", "feeling weak": "fatigue",
-    "burned out": "fatigue", "lethargic": "fatigue", "lack of energy": "fatigue", "groggy": "fatigue",
+    # ==================== General ====================
+    "tired": "fatigue",
+    "exhausted": "fatigue",
+    "burned out": "fatigue",
+    "worn out": "fatigue",
+    "lethargic": "fatigue",
+    "groggy": "fatigue",
+    "lack of energy": "fatigue",
+    "feeling weak": "fatigue",
+    "fatigued": "fatigue",
+    
+    # ==================== Vision ====================
+    "blurry vision": "blurred vision",
+    "can't see clearly": "blurred vision",
+    "dim vision": "blurred vision",
+    "spots in vision": "blurred vision",
+    "seeing spots": "blurred vision",
+    "floaters": "blurred vision",
+    "flashes of light": "photopsia",
+    "vision fades": "blurred vision",
+    "vision problems": "blurred vision",
+    "seeing double": "diplopia",
+    "double vision": "diplopia",
+    "crossed eyes": "strabismus",
+    "eye misalignment": "strabismus",
+    "sensitive to light": "photophobia",
+    "light sensitivity": "photophobia",
 
-    # Vision
-    "blurry vision": "blurred vision", "can't see clearly": "blurred vision", "vision problems": "blurred vision",
-    "seeing spots": "blurred vision", "dim vision": "blurred vision", "vision fades": "blurred vision",
+    # ==================== Headache / Nausea ====================
+    "head pain": "headache",
+    "hurting head": "headache",
+    "pounding head": "headache",
+    "aching head": "headache",
+    "migraine": "headache",
+    "feel nauseous": "nausea",
+    "queasy": "nausea",
+    "sick to stomach": "nausea",
+    "want to throw up": "nausea",
+    "puke": "nausea",
+    "vomit": "nausea",
+    "throwing up": "nausea",
+    "retching": "nausea",
+    "green around the gills": "nausea",
+    "turned stomach": "nausea",
 
-    # Headache/Nausea
-    "head pain": "headache", "hurting head": "headache", "pounding head": "headache",
-    "migraine": "headache", "aching head": "headache",
-    "feel nauseous": "nausea", "sick to stomach": "nausea", "want to throw up": "nausea",
-    "puke": "nausea", "vomit": "nausea", "queasy": "nausea", "throwing up": "nausea",
-    "retching": "nausea", "green around the gills": "nausea", "turned stomach": "nausea",
+    # ==================== Fever ====================
+    "feverish": "fever",
+    "burning up": "fever",
+    "high temperature": "fever",
+    "hot body": "fever",
+    "hot flush": "fever",
+    "temperature": "fever",
+    "chills": "fever",
 
-    # Fever
-    "feverish": "fever", "hot body": "fever", "high temperature": "fever",
-    "chills": "fever", "burning up": "fever", "hot flush": "fever", "temperature": "fever",
-
-    # Chest
-    "chest tightness": "chest pain", "pressure in chest": "chest pain", "chest discomfort": "chest pain",
-    "burning in chest": "chest pain", "tight chest": "chest pain", "squeezing chest": "chest pain",
+    # ==================== Chest ====================
+    "chest tightness": "chest pain",
+    "chest discomfort": "chest pain",
+    "burning in chest": "chest pain",
+    "tight chest": "chest pain",
+    "pressure in chest": "chest pain",
     "pain in chest when breathing": "chest pain",
+    "squeezing chest": "chest pain",
+    "heart racing": "palpitations",
+    "pounding heart": "palpitations",
 
-    # Cold symptoms
-    "runny nose": "rhinorrhea", "stuffy nose": "nasal congestion", "sneezing": "rhinorrhea",
-    "coughing": "cough", "sniffles": "rhinorrhea", "drippy nose": "rhinorrhea",
-    "phlegm": "cough", "sore throat": "throat pain",
+    # ==================== Cold Symptoms ====================
+    "runny nose": "rhinorrhea",
+    "sneezing": "rhinorrhea",
+    "sniffles": "rhinorrhea",
+    "drippy nose": "rhinorrhea",
+    "stuffy nose": "nasal congestion",
+    "congested": "nasal congestion",
+    "blocked nose": "nasal congestion",
+    "sore throat": "throat pain",
+    "scratchy throat": "throat pain",
+    "hoarse voice": "hoarseness",
+    "hoarseness": "hoarseness",
+    "coughing": "cough",
+    "cough with phlegm": "productive cough",
+    "green mucus": "productive cough",
+    "phlegm": "productive cough",
+    "mucus": "productive cough",
 
-    # Skin
-    "skin bumps": "rash", "itchy skin": "rash", "red spots": "rash", "skin irritation": "rash",
-    "redness on skin": "rash", "itchy spots": "rash", "hives": "rash",
+    # ==================== Skin ====================
+    "red spots": "rash",
+    "itchy skin": "rash",
+    "itchy spots": "rash",
+    "hives": "rash",
+    "skin bumps": "rash",
+    "skin irritation": "rash",
+    "redness on skin": "rash",
+    "peeling skin": "rash",
+    "dry skin": "rash",
 
-    # Breathing
-    "short of breath": "shortness of breath", "can't catch breath": "shortness of breath",
+    # ==================== Breathing ====================
+    "short of breath": "shortness of breath",
+    "can't breathe": "shortness of breath",
+    "can't catch breath": "shortness of breath",
+    "breathlessness": "shortness of breath",
     "wheezing": "shortness of breath",
+    "trouble breathing": "shortness of breath",
 
-    # Others
-    "sweats": "sweating", "shaky": "tremors","feeling dizzy": "dizziness", "feel dizzy": "dizziness", "skipped meals": "hypoglycemia",
-    "skipping meals": "hypoglycemia", "light sensitivity": "photophobia",
-    "light flashes": "photophobia", "disoriented": "confusion", "mental fog": "confusion",
-    "loss of appetite": "anorexia", "can’t eat": "anorexia",
-    "fainting": "syncope", "passed out": "syncope",
+    # ==================== Dizziness ====================
+    "feel dizzy": "dizziness",
+    "feeling dizzy": "dizziness",
+    "spinning sensation": "dizziness",
+    "lightheaded": "dizziness",
+    "feel faint": "dizziness",
+    "loss of balance": "dizziness",
 
-    # Heat-related
-    "overheated": "heat exhaustion", "heatstroke": "heat exhaustion", "sun exposure": "heat exhaustion",
+    # ==================== GI / Stomach ====================
+    "stomach ache": "abdominal pain",
+    "tummy pain": "abdominal pain",
+    "belly pain": "abdominal pain",
+    "pain after eating": "abdominal pain",
+    "diarrhea": "diarrhea",
+    "loose motion": "diarrhea",
+    "constipated": "constipation",
+    "bloated": "bloating",
+    "gas": "bloating",
+    "acid reflux": "heartburn",
+    "burning in stomach": "heartburn",
+    "loss of appetite": "anorexia",
+    "can’t eat": "anorexia",
+    "skipped meals": "anorexia",
+
+    # ==================== Urinary ====================
+    "frequent urination": "polyuria",
+    "urinating often": "polyuria",
+    "excessive urination": "polyuria",
+    "always thirsty": "polydipsia",
+    "very thirsty": "polydipsia",
+    "excessive thirst": "polydipsia",
+    "painful urination": "dysuria",
+    "burning urination": "dysuria",
+    "burning when peeing": "dysuria",
+    "cloudy urine": "urinary tract infection",
+    "getting up to pee at night": "nocturia",
+
+    # ==================== Neurological ====================
+    "numbness": "paresthesia",
+    "tingling": "paresthesia",
+    "pins and needles": "paresthesia",
+    "hand numbness": "paresthesia",
+    "shaky": "tremors",
+    "trembling": "tremors",
+    "trembling hands": "tremors",
+    "hand tremors": "tremors",
+    "shaking hands": "tremors",
+    "muscle weakness": "weakness",
+    "feeling weak": "weakness",
+    "weak limbs": "weakness",
+    "unsteady": "balance issues",
+
+    # ==================== Psychological ====================
+    "anxious": "anxiety",
+    "nervous": "anxiety",
+    "panic attacks": "anxiety",
+    "low mood": "depression",
+    "sad": "depression",
+    "disoriented": "confusion",
+    "confused": "confusion",
+    "mental fog": "confusion",
+    "forgetfulness": "memory loss",
+    "can't concentrate": "concentration difficulty",
+    "sleep issues": "insomnia",
+    "trouble sleeping": "insomnia",
+
+    # ==================== Cardiovascular ====================
+    "swollen feet": "edema",
+    "ankle swelling": "edema",
+    "leg swelling": "edema",
+    "fluid retention": "edema",
+    "pounding heart": "palpitations",
+    "heart fluttering": "palpitations",
+
+    # ==================== Musculoskeletal ====================
+    "joint pain": "arthralgia",
+    "knee pain": "joint pain",
+    "shoulder pain": "joint pain",
+    "muscle pain": "myalgia",
+    "body ache": "myalgia",
+    "sore muscles": "myalgia",
+    "stiff joints": "joint stiffness",
+
+    # ==================== Reproductive / Urinary ====================
+    "irregular periods": "menstrual irregularity",
+    "heavy periods": "menorrhagia",
+    "painful periods": "dysmenorrhea",
+    "vaginal discharge": "discharge",
+    "burning while urinating": "dysuria",
+
+    # ==================== Others ====================
+    "passed out": "syncope",
+    "fainting": "syncope",
+    "night sweats": "sweating",
+    "sweating a lot": "sweating",
+    "sun exposure": "heat exhaustion",
+    "heatstroke": "heat exhaustion",
+    "overheated": "heat exhaustion",
+
+    # ==================== testing ====================
+     # Urinary
+    'painful urination': ['burning sensation while urinating', 'burning urination', 'pain when urinating', 'burning pee', 'burning while peeing'],
+    'frequent urination': ['peeing frequently', 'urinating often', 'waking up to urinate', 'nighttime urination'],
+    'excessive thirst': ['feeling very thirsty', 'thirsty all the time'],
+
+    # Gastrointestinal
+    'indigestion': ['acid reflux', 'stomach upset', 'discomfort after eating', 'trouble digesting'],
+    'lower abdominal pain': ['lower stomach pain', 'pain in lower abdomen', 'cramp in lower abdomen'],
+    'stomach pain': ['belly pain', 'stomach ache', 'abdominal pain'],
+
+    # Respiratory
+    'green sputum': ['green mucus', 'green phlegm', 'greenish cough'],
+
+    # Eye symptoms
+    'photophobia': ['sensitivity to light', 'light sensitivity'],
+    'red eye': ['eye redness', 'redness in eye'],
+
+    # Neurological
+    'hand numbness': ['numb hands', 'numbness in hand', 'hands feel numb'],
+    'dizziness': ['lightheaded', 'feel like fainting', 'unsteady'],
+
+    # Cardiac
+    'palpitations': ['pounding in chest', 'irregular heartbeat', 'racing heart'],
+
+    # Sleep
+    'insomnia': ['trouble sleeping', 'can’t fall asleep', 'difficulty falling asleep'],
+
+    # Skin/Hair
+    'hair loss': ['losing hair', 'patchy hair loss', 'bald spots'],
+
+    # Nasal
+    'nasal congestion': ['stuffy nose', 'blocked nose', 'clogged nose'],
+
+    # Headache standardization
+    'headache': ['throbbing headache', 'dull headache', 'sudden headache', 'sharp headache', 'pounding headache'],
+
+    # Eye symptoms
+    'blurred vision': ['blurry vision', 'vision gets blurry'],
+
+    # Fatigue variants
+    'fatigue': ['feeling tired', 'super tired', 'exhausted', 'low energy'],
+
+    # Chest pain variants
+    'chest pain': ['pain in chest', 'sharp chest pain'],
+    'chest tightness': ['tightness in chest', 'pressure in chest'],
+
+    # Nausea
+    'nausea': ['feeling like vomiting', 'pukish', 'want to throw up'],
+
+    # Sore throat
+    'sore throat': ['throat pain', 'hurts to swallow'],
 }
+
 
 modifiers = [
     "constant", "throbbing", "sharp", "mild", "severe", "intermittent",
@@ -100,33 +309,33 @@ modifiers = [
 ]
 
 # -------------------- Symptom Extraction --------------------
-def extract_symptoms(text, threshold=92):
+from rapidfuzz import process, fuzz
+
+def extract_symptoms(text: str, threshold: int = 92):
     text_lower = text.lower()
     doc = nlp(text)
+
     ner_extracted = [ent.text.lower() for ent in doc.ents if ent.label_ == "DISEASE"]
 
-    synonyms_found = [synonym_map[key] for key in synonym_map if key in text_lower]
+    synonyms_found = []
+    for key in synonym_map:
+        if key in text_lower:
+            synonyms = synonym_map[key]
+            if isinstance(synonyms, list):
+                synonyms_found.extend(synonyms)
+            else:
+                synonyms_found.append(synonyms)
+
     keyword_matched = [sym for sym in symptom_vocab if re.search(rf'\b{re.escape(sym)}\b', text_lower)]
 
-    pattern_based = [
-        sym for mod in modifiers for sym in symptom_vocab
-        if mod in text_lower and sym in text_lower
-    ]
 
-    combined = list(set(ner_extracted + synonyms_found + keyword_matched + pattern_based))
-    final_matches = set()
+    # Flatten and deduplicate
+    all_raw = ner_extracted + synonyms_found + keyword_matched
+    flattened = [item for item in all_raw if isinstance(item, str)]
+    combined_raw = list(set(flattened))
 
-    for s in combined:
-        result = process.extractOne(s, symptom_vocab, score_cutoff=threshold)
-        if result:
-            final_matches.add(result[0])
+    return combined_raw
 
-    if not final_matches:
-        fallback = process.extractOne(text_lower, symptom_vocab, score_cutoff=threshold - 7)
-        if fallback:
-            final_matches.add(fallback[0])
-
-    return sorted(final_matches)
 
 # -------------------- Follow-Up Questions --------------------
 print("📥 Loading follow-up question map...")
@@ -165,42 +374,142 @@ rag_chain = ConversationalRetrievalChain.from_llm(
 
 # -------------------- Response Optimizer --------------------
 def summarize_response(response, max_lines=10):
+    """
+    Extract condition names from response with better parsing
+    """
     lines = response.strip().split("\n")
-    summary = []
-
+    conditions = []
     for line in lines:
         line = line.strip()
-        if line and not line.lower().startswith("please"):
-            summary.append(line)
-        if len(summary) >= max_lines:
+        # Try multiple patterns to extract condition names
+        patterns = [
+            r"\d\.\s*Condition Name:\s*(.+)",
+            r"\d\.\s*(.+?)(?:\s*Reason:|$)",
+            r"Condition Name:\s*(.+)",
+            r"\d\.\s*(.+?)(?:\n|$)"
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, line, re.IGNORECASE)
+            if match:
+                condition = match.group(1).strip().lower()
+                # Clean up the condition name
+                condition = re.sub(r'\s*reason:.*$', '', condition, flags=re.IGNORECASE)
+                conditions.append(condition)
+                break
+
+        if len(conditions) >= 2:
             break
 
-    summary.append("It's best to consult a healthcare provider for a clear diagnosis.")
-    return "\n".join(summary)
+    # If we couldn't extract conditions, return original response
+    if not conditions:
+        return response.lower().strip()
+
+    # Return formatted conditions
+    return ", ".join(conditions[:2])
+ 
+
+# --------------------Fallback  --------------------
+def apply_fallback_diagnosis(symptoms, context=""):
+    """
+    Provide reasonable diagnoses when main system fails
+    """
+    # Common symptom-to-condition mappings
+    fallback_mappings = {
+        "fever": ["influenza", "viral infection"],
+        "headache": ["migraine", "tension headache"],
+        "chest pain": ["asthma", "heart condition"],
+        "nausea": ["gastroenteritis", "food poisoning"],
+        "joint pain": ["arthritis", "rheumatoid arthritis"],
+        "fatigue": ["anemia", "hypothyroidism"],
+        "shortness of breath": ["asthma", "heart failure"],
+        "blurred vision": ["diabetes", "eye strain"],
+        "dizziness": ["low blood pressure", "dehydration"],
+        "frequent urination": ["diabetes", "urinary tract infection"],
+        "rash": ["allergic reaction", "dermatitis"],
+        "cough": ["bronchitis", "pneumonia"],
+        "abdominal pain": ["gastritis", "irritable bowel syndrome"]
+    }
+    # Find matching conditions
+    suggested_conditions = []
+    for symptom in symptoms:
+        if symptom in fallback_mappings:
+            suggested_conditions.extend(fallback_mappings[symptom])
+    # If no matches, provide general conditions
+    if not suggested_conditions:
+        suggested_conditions = ["viral infection", "stress-related symptoms"]
+    # Take first two unique conditions
+    unique_conditions = list(dict.fromkeys(suggested_conditions))[:2]
+    # Ensure we have exactly 2 conditions
+    if len(unique_conditions) < 2:
+        unique_conditions.append("general medical condition")
+    return f"1. Condition Name: {unique_conditions[0]}\nReason: Based on symptom pattern and clinical presentation.\n2. Condition Name: {unique_conditions[1]}\nReason: Alternative diagnosis considering patient symptoms."
 
 
 # -------------------- Diagnosis Generator --------------------
-def generate_diagnosis(symptoms, followup_answers, extra_input=""):
-    all_answers = []
-    for answers in followup_answers.values():
-        all_answers.extend(answers)
+def generate_diagnosis(symptoms, followup_answers, extra_input="", age=None, gender=None, country=None):
+    # Step 1: Normalize and structure follow-up input
+    if isinstance(followup_answers, dict):
+        all_answers = []
+        for answers in followup_answers.values():
+            all_answers.extend(answers)
+    else:
+        all_answers = [followup_answers.strip()] if followup_answers else []
+ 
+    # Step 2: Add extra user input if available
     if extra_input:
-        all_answers.append(f"Extra input: {extra_input}")
-
-    final_context = ". ".join(all_answers)
-    full_symptoms = ", ".join(symptoms)
-
-    query = (
-    f"Symptoms: {full_symptoms}. Context: {final_context}. "
-    f"List exactly two possible medical conditions that could explain the symptoms. "
-    f"Respond in this format:\n"
-    f"1. Condition Name: ...\nReason: ...\n\n"
-    f"2. Condition Name: ...\nReason: ..."
-)
-
-
-    result = rag_chain.invoke({"question": query})
-    return summarize_response(result["answer"])
+        all_answers.append(f"Additional Notes: {extra_input}")
+ 
+    # Step 3: Include demographic information
+    demographics = []
+    if age:
+        demographics.append(f"Age: {age}")
+    if gender:
+        demographics.append(f"Gender: {gender}")
+    if country:
+        demographics.append(f"Country: {country}")
+    if demographics:
+        all_answers.insert(0, ". ".join(demographics))
+ 
+    # Step 4: Join everything into a single context string
+    context = ". ".join(all_answers) if all_answers else "No additional context provided."
+    symptom_str = ", ".join(symptoms) if symptoms else "Not specified"
+ 
+    # Step 5: IMPROVED PROMPT - More directive and specific
+    query = f"""
+    You are an expert medical diagnostic assistant with access to comprehensive medical knowledge.
+    PATIENT PRESENTATION:
+    Primary Symptoms: {symptom_str}
+    Additional Context: {context}
+    TASK: Identify the TWO most likely medical conditions based on the symptoms provided.
+    MANDATORY REQUIREMENTS:
+    1. You MUST provide exactly 2 diagnoses - never say "I don't know"
+    2. Choose from well-known medical conditions
+    3. Use your medical knowledge even if symptoms don't perfectly match
+    4. Provide reasonable medical hypotheses based on symptom patterns
+    5. Consider common conditions first, then rare ones
+    RESPONSE FORMAT (STRICT):
+    1. Condition Name: [specific medical condition]
+    Reason: [clinical reasoning based on symptoms and context]
+    2. Condition Name: [different medical condition]
+    Reason: [clinical reasoning based on symptoms and context]
+    EXAMPLES OF GOOD RESPONSES:
+    - "diabetes" not "metabolic disorder"
+    - "heart failure" not "cardiac condition"
+    - "migraine" not "headache disorder"
+    Always provide your best medical assessment. If uncertain, provide the most probable conditions based on symptom presentation.
+    """
+ 
+    # Step 6: Get response from LLM with fallback
+    try:
+        result = rag_chain.invoke({"question": query})
+        response = result["answer"]
+        # If response contains "I don't know" or similar, apply fallback
+        if any(phrase in response.lower() for phrase in ["i don't know", "cannot find", "cannot answer", "not enough information"]):
+            response = apply_fallback_diagnosis(symptoms, context)
+        return response.strip()
+    except Exception as e:
+        print(f"Error in diagnosis generation: {e}")
+        return apply_fallback_diagnosis(symptoms, context)
 
 # -------------------- CLI Interactive Mode --------------------
 def main():
@@ -217,7 +526,7 @@ def main():
         print("⚠️ Couldn't extract symptoms. Try rephrasing.")
         return
 
-    print(f"✅ Extracted symptoms: {', '.join(symptoms)}")
+    print(f"Extracted symptoms: {', '.join(symptoms)}")
     followup_answers = {}
 
     for symptom in symptoms:
@@ -243,3 +552,4 @@ def main():
 # -------------------- Entry Point --------------------
 if __name__ == "__main__":
     main()
+
