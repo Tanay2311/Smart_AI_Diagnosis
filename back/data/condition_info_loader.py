@@ -18,5 +18,6 @@ with open(DATA_PATH, newline="", encoding="utf-8") as f:
             "description": row.get("Description", "").strip(),
             "symptoms": [x.strip() for x in row.get("Symptoms", "").split(",") if x.strip()],
             "treatments": [x.strip() for x in row.get("Treatment", "").split(",") if x.strip()],
-            "risks": [x.strip() for x in row.get("Risk_Factors", "").split(",") if x.strip()],
+            "risks": [x.strip() for x in (row.get("Risk_Factors") or "").split(",") if x.strip()],
+
         }

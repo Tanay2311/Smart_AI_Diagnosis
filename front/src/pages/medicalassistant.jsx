@@ -35,28 +35,28 @@ function MedicalAssistant() {
     setStep("followup");
   };
 
-  const handleBackToInput = () => {
-    setStep("input");
-  };
-
   const handleBackToExtracted = () => {
     setStep("extracted");
   };
 
   const handleBackToSymptoms = () => {
-    setStep("extracted");
+    setStep("input");
   };
+
+  const demographics =
+      JSON.parse(localStorage.getItem("user_demographics")) || {};
+  const userName = demographics.name || "there";
 
   const handleFollowUpComplete = async (qaData, notes = "") => {
     setFollowUpQA(qaData);
     setExtraNotes(notes);
 
-    const demographics =
-      JSON.parse(localStorage.getItem("user_demographics")) || {};
+    
     const payload = {
       symptoms: symptomText,
       followup_answers: qaData,
       extra_input: notes,
+      name: demographics.name || null,
       age: demographics.age ? parseInt(demographics.age) : null,
       gender: demographics.gender || null,
       country: demographics.country || null,
@@ -88,7 +88,9 @@ function MedicalAssistant() {
       <h1 className="text-3xl font-bold text-center text-purple-700 mb-8">
         🩺 Smart AI Medical Assistant
       </h1>
-
+      <h2 className="text-xl text-center text-gray-800 mb-6">
+          Hello, {userName}! Let's get started with your diagnosis.
+      </h2>
       {step === "input" && (
         <SymptomInputForm onSubmit={handleSymptomExtraction} />
       )}
@@ -105,7 +107,7 @@ function MedicalAssistant() {
         <FollowUpChat
           symptoms={extractedSymptoms}
           onComplete={handleFollowUpComplete}
-          onBackToSymptoms={handleBackToExtracted}
+          onBack={handleBackToExtracted}
           onRestartFollowUp={() => setFollowUpQA({})}
         />
       )}

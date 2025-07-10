@@ -239,6 +239,176 @@ synonym_map = {
     "vaginal discharge": "discharge",
     "burning while urinating": "dysuria",
 
+    # Muscle Strain
+    "pulled muscle": "muscle strain",
+    "muscle tear": "muscle strain",
+    "strained muscle": "muscle strain",
+    "muscle injury": "muscle strain",
+    "muscle soreness": "muscle strain",
+
+    # Tendonitis
+    "tendon pain": "tendonitis",
+    "joint tendon pain": "tendonitis",
+    "tendinitis": "tendonitis",  # spelling variant
+    "tendon inflammation": "tendonitis",
+
+    # Myositis
+    "muscle inflammation": "myositis",
+    "muscle tenderness": "myositis",
+    "muscle fatigue": "myositis",
+    "difficulty climbing stairs": "myositis",
+
+    # Fibromyalgia
+    "chronic muscle pain": "fibromyalgia",
+    "widespread pain": "fibromyalgia",
+    "muscle ache all over": "fibromyalgia",
+    "fibro pain": "fibromyalgia",
+    "tender points": "fibromyalgia",
+    "body pain with fatigue": "fibromyalgia",
+
+    # Rhabdomyolysis
+    "dark urine after exercise": "rhabdomyolysis",
+    "muscle breakdown": "rhabdomyolysis",
+    "severe muscle pain": "rhabdomyolysis",
+    "muscle swelling": "rhabdomyolysis",
+    "rhabdo": "rhabdomyolysis",
+
+    # Muscle Cramp
+    "charley horse": "muscle cramp",
+    "leg cramp": "muscle cramp",
+    "sudden muscle pain": "muscle cramp",
+    "tight muscle": "muscle cramp",
+    "cramping": "muscle cramp",
+    "muscle spasm": "muscle cramp",
+
+    # Sinusitis
+    "facial pain": "facial pain",
+    "nasal congestion": "nasal congestion",
+    "stuffed nose": "nasal congestion",
+    "postnasal drip": "postnasal drip",
+
+    # Conjunctivitis
+    "red eyes": "red eyes",
+    "eye redness": "red eyes",
+    "eye discharge": "discharge",
+    "watery eyes": "tearing",
+    "itchy eyes": "itching",
+
+    # Otitis Media
+    "ear pain": "ear pain",
+    "earache": "ear pain",
+    "hearing loss": "hearing loss",
+    "irritability": "irritability",
+
+    # Anemia
+    "pallor": "pallor",
+    "dizziness": "dizziness",
+    "lightheadedness": "dizziness",
+    "tiredness": "fatigue",
+    "shortness of breath": "shortness of breath",
+
+    # Gallstones
+    "upper abdominal pain": "upper abdominal pain",
+    "gallbladder pain": "upper abdominal pain",
+
+    # Bacterial Vaginosis
+    "vaginal discharge": "vaginal discharge",
+    "vaginal odor": "odor",
+    "vaginal burning": "burning",
+
+    # Tension Headache
+    "dull headache": "dull head pain",
+    "tight scalp": "scalp tightness",
+    "neck stiffness": "neck stiffness",
+
+    # Plantar Fasciitis
+    "heel pain": "heel pain",
+    "morning foot pain": "worse in morning",
+
+    # Scabies
+    "intense itching": "intense itching",
+    "mite rash": "rash",
+    "burrow marks": "burrow tracks",
+
+    # Eczema
+    "red patches": "red patches",
+    "skin dryness": "dry skin",
+    "cracked skin": "cracking",
+
+     # Bronchitis
+    "productive cough": "cough",
+    "wheezing": "wheezing",
+    "mucus": "mucus",
+    "chest discomfort": "chest discomfort",
+
+    # Influenza
+    "muscle aches": "muscle aches",
+    "body ache": "muscle aches",
+
+    # Heat Stroke
+    "high temperature": "high body temp",
+    "dry skin": "dry skin",
+    "rapid heartbeat": "rapid pulse",
+    "heat exhaustion": "high body temp",
+
+    # Food Poisoning
+    "stomach cramps": "abdominal cramps",
+    "loose motion": "diarrhea",
+
+    # Lactose Intolerance
+    "milk allergy": "lactose intolerance",
+    "gas": "gas",
+    "bloating": "bloating",
+
+    # IBS
+    "constipation": "constipation",
+    "diarrhea": "diarrhea",
+    "gut pain": "abdominal pain",
+
+    # Seasonal Allergies
+    "hay fever": "seasonal allergies",
+    "runny nose": "runny nose",
+    "nasal congestion": "congestion",
+
+    # Depression
+    "low mood": "low mood",
+    "loss of interest": "low mood",
+    "sadness": "low mood",
+    "appetite loss": "appetite changes",
+
+    # Anxiety
+    "worry": "worry",
+    "nervousness": "restlessness",
+    "tight chest": "muscle tension",
+
+    # Menstrual Cramps
+    "period pain": "lower abdominal pain",
+    "cramps": "lower abdominal pain",
+
+    # Dyspepsia
+    "indigestion": "upper abdominal discomfort",
+    "burping": "burping",
+    "early fullness": "early satiety",
+
+    # Sciatica
+    "leg pain": "leg tingling",
+    "back pain": "lower back pain",
+    "nerve pain": "leg tingling",
+
+    # Constipation
+    "hard stools": "hard stools",
+    "difficulty pooping": "straining",
+
+    # Tonsillitis
+    "pain swallowing": "difficulty swallowing",
+    "throat pain": "sore throat",
+    "swollen tonsils": "swollen tonsils",
+
+    # Ringworm
+    "fungal rash": "itchy ring-shaped rash",
+    "scaly rash": "scaling",
+    "red ring": "redness",
+
     # ==================== Others ====================
     "passed out": "syncope",
     "fainting": "syncope",
@@ -248,58 +418,6 @@ synonym_map = {
     "heatstroke": "heat exhaustion",
     "overheated": "heat exhaustion",
 
-    # ==================== testing ====================
-     # Urinary
-    'painful urination': ['burning sensation while urinating', 'burning urination', 'pain when urinating', 'burning pee', 'burning while peeing'],
-    'frequent urination': ['peeing frequently', 'urinating often', 'waking up to urinate', 'nighttime urination'],
-    'excessive thirst': ['feeling very thirsty', 'thirsty all the time'],
-
-    # Gastrointestinal
-    'indigestion': ['acid reflux', 'stomach upset', 'discomfort after eating', 'trouble digesting'],
-    'lower abdominal pain': ['lower stomach pain', 'pain in lower abdomen', 'cramp in lower abdomen'],
-    'stomach pain': ['belly pain', 'stomach ache', 'abdominal pain'],
-
-    # Respiratory
-    'green sputum': ['green mucus', 'green phlegm', 'greenish cough'],
-
-    # Eye symptoms
-    'photophobia': ['sensitivity to light', 'light sensitivity'],
-    'red eye': ['eye redness', 'redness in eye'],
-
-    # Neurological
-    'hand numbness': ['numb hands', 'numbness in hand', 'hands feel numb'],
-    'dizziness': ['lightheaded', 'feel like fainting', 'unsteady'],
-
-    # Cardiac
-    'palpitations': ['pounding in chest', 'irregular heartbeat', 'racing heart'],
-
-    # Sleep
-    'insomnia': ['trouble sleeping', 'can’t fall asleep', 'difficulty falling asleep'],
-
-    # Skin/Hair
-    'hair loss': ['losing hair', 'patchy hair loss', 'bald spots'],
-
-    # Nasal
-    'nasal congestion': ['stuffy nose', 'blocked nose', 'clogged nose'],
-
-    # Headache standardization
-    'headache': ['throbbing headache', 'dull headache', 'sudden headache', 'sharp headache', 'pounding headache'],
-
-    # Eye symptoms
-    'blurred vision': ['blurry vision', 'vision gets blurry'],
-
-    # Fatigue variants
-    'fatigue': ['feeling tired', 'super tired', 'exhausted', 'low energy'],
-
-    # Chest pain variants
-    'chest pain': ['pain in chest', 'sharp chest pain'],
-    'chest tightness': ['tightness in chest', 'pressure in chest'],
-
-    # Nausea
-    'nausea': ['feeling like vomiting', 'pukish', 'want to throw up'],
-
-    # Sore throat
-    'sore throat': ['throat pain', 'hurts to swallow'],
 }
 
 

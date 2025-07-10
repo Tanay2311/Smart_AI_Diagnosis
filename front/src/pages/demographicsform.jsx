@@ -5,11 +5,12 @@ export default function DemographicsForm() {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
+  const [name, setName] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("user_demographics", JSON.stringify({ age, gender, country }));
+    localStorage.setItem("user_demographics", JSON.stringify({ age, gender, country, name }));
     navigate("/assistant");
   };
 
@@ -22,6 +23,15 @@ export default function DemographicsForm() {
         <h2 className="text-2xl font-bold text-purple-700 mb-6 text-center">
           👤 Your Information
         </h2>
+
+        <label className="block text-gray-700 mb-2">What can we call you?</label>
+        <input
+          type="text"
+          className="w-full mb-4 px-4 py-2 rounded border border-gray-300"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
 
         <label className="block text-gray-700 mb-2">Age</label>
         <input
