@@ -1,67 +1,102 @@
 Symptom,Follow_Up_1,Follow_Up_2,Follow_Up_3,Follow_Up_4
-abdominal pain,When did the abdominal pain start?,How severe is the abdominal pain on a scale from 1 to 10?,Does anything make the abdominal pain better or worse?,Is the abdominal pain constant or does it come and go?
-acid regurgitation,When did the acid regurgitation start?,How severe is the acid regurgitation on a scale from 1 to 10?,Does anything make the acid regurgitation better or worse?,Is the acid regurgitation constant or does it come and go?
-anal itching,When did the anal itching start?,How severe is the anal itching on a scale from 1 to 10?,Does anything make the anal itching better or worse?,Is the anal itching constant or does it come and go?
-blackheads,When did the blackheads start?,How severe is the blackheads on a scale from 1 to 10?,Does anything make the blackheads better or worse?,Is the blackheads constant or does it come and go?
-bleeding,When did the bleeding start?,How severe is the bleeding on a scale from 1 to 10?,Does anything make the bleeding better or worse?,Is the bleeding constant or does it come and go?
-blisters,When did the blisters start?,How severe is the blisters on a scale from 1 to 10?,Does anything make the blisters better or worse?,Is the blisters constant or does it come and go?
-bloating,When did the bloating start?,How severe is the bloating on a scale from 1 to 10?,Does anything make the bloating better or worse?,Is the bloating constant or does it come and go?
-blurred vision,When did the blurred vision start?,How severe is the blurred vision on a scale from 1 to 10?,Does anything make the blurred vision better or worse?,Is the blurred vision constant or does it come and go?
-brief spinning sensations,When did the brief spinning sensations start?,How severe is the brief spinning sensations on a scale from 1 to 10?,Does anything make the brief spinning sensations better or worse?,Is the brief spinning sensations constant or does it come and go?
-chest pain,When did the chest pain start?,How severe is the chest pain on a scale from 1 to 10?,Does anything make the chest pain better or worse?,Is the chest pain constant or does it come and go?
-chills,When did the chills start?,How severe is the chills on a scale from 1 to 10?,Does anything make the chills better or worse?,Is the chills constant or does it come and go?
-cold intolerance,When did the cold intolerance start?,How severe is the cold intolerance on a scale from 1 to 10?,Does anything make the cold intolerance better or worse?,Is the cold intolerance constant or does it come and go?
-confusion,When did the confusion start?,How severe is the confusion on a scale from 1 to 10?,Does anything make the confusion better or worse?,Is the confusion constant or does it come and go?
-congestion,When did the congestion start?,How severe is the congestion on a scale from 1 to 10?,Does anything make the congestion better or worse?,Is the congestion constant or does it come and go?
-constipation,When did the constipation start?,How severe is the constipation on a scale from 1 to 10?,Does anything make the constipation better or worse?,Is the constipation constant or does it come and go?
-cough,When did the cough start?,How severe is the cough on a scale from 1 to 10?,Does anything make the cough better or worse?,Is the cough constant or does it come and go?
-crepitus,When did the crepitus start?,How severe is the crepitus on a scale from 1 to 10?,Does anything make the crepitus better or worse?,Is the crepitus constant or does it come and go?
-dark urine,When did the dark urine start?,How severe is the dark urine on a scale from 1 to 10?,Does anything make the dark urine better or worse?,Is the dark urine constant or does it come and go?
-dizziness,When did the dizziness start?,How severe is the dizziness on a scale from 1 to 10?,Does anything make the dizziness better or worse?,Is the dizziness constant or does it come and go?
-dry skin,When did the dry skin start?,How severe is the dry skin on a scale from 1 to 10?,Does anything make the dry skin better or worse?,Is the dry skin constant or does it come and go?
-fatigue,When did the fatigue start?,How severe is the fatigue on a scale from 1 to 10?,Does anything make the fatigue better or worse?,Is the fatigue constant or does it come and go?
-fever,When did the fever start?,How severe is the fever on a scale from 1 to 10?,Does anything make the fever better or worse?,Is the fever constant or does it come and go?
-frequent urination,When did the frequent urination start?,How severe is the frequent urination on a scale from 1 to 10?,Does anything make the frequent urination better or worse?,Is the frequent urination constant or does it come and go?
-headache,When did the headache start?,How severe is the headache on a scale from 1 to 10?,Does anything make the headache better or worse?,Is the headache constant or does it come and go?
-heartburn,When did the heartburn start?,How severe is the heartburn on a scale from 1 to 10?,Does anything make the heartburn better or worse?,Is the heartburn constant or does it come and go?
-hives,When did the hives start?,How severe is the hives on a scale from 1 to 10?,Does anything make the hives better or worse?,Is the hives constant or does it come and go?
-hoarseness,When did the hoarseness start?,How severe is the hoarseness on a scale from 1 to 10?,Does anything make the hoarseness better or worse?,Is the hoarseness constant or does it come and go?
-honeycolored crusts,When did the honeycolored crusts start?,How severe is the honeycolored crusts on a scale from 1 to 10?,Does anything make the honeycolored crusts better or worse?,Is the honeycolored crusts constant or does it come and go?
-hunger,When did the hunger start?,How severe is the hunger on a scale from 1 to 10?,Does anything make the hunger better or worse?,Is the hunger constant or does it come and go?
-imbalance,When did the imbalance start?,How severe is the imbalance on a scale from 1 to 10?,Does anything make the imbalance better or worse?,Is the imbalance constant or does it come and go?
-increased thirst,When did the increased thirst start?,How severe is the increased thirst on a scale from 1 to 10?,Does anything make the increased thirst better or worse?,Is the increased thirst constant or does it come and go?
-itching,When did the itching start?,How severe is the itching on a scale from 1 to 10?,Does anything make the itching better or worse?,Is the itching constant or does it come and go?
-itchy eyes,When did the itchy eyes start?,How severe is the itchy eyes on a scale from 1 to 10?,Does anything make the itchy eyes better or worse?,Is the itchy eyes constant or does it come and go?
-itchy rash,When did the itchy rash start?,How severe is the itchy rash on a scale from 1 to 10?,Does anything make the itchy rash better or worse?,Is the itchy rash constant or does it come and go?
-jaundice,When did the jaundice start?,How severe is the jaundice on a scale from 1 to 10?,Does anything make the jaundice better or worse?,Is the jaundice constant or does it come and go?
-joint pain,When did the joint pain start?,How severe is the joint pain on a scale from 1 to 10?,Does anything make the joint pain better or worse?,Is the joint pain constant or does it come and go?
-nail pitting,When did the nail pitting start?,How severe is the nail pitting on a scale from 1 to 10?,Does anything make the nail pitting better or worse?,Is the nail pitting constant or does it come and go?
-nausea,When did the nausea start?,How severe is the nausea on a scale from 1 to 10?,Does anything make the nausea better or worse?,Is the nausea constant or does it come and go?
-neck pain,When did the neck pain start?,How severe is the neck pain on a scale from 1 to 10?,Does anything make the neck pain better or worse?,Is the neck pain constant or does it come and go?
-nodules,When did the nodules start?,How severe is the nodules on a scale from 1 to 10?,Does anything make the nodules better or worse?,Is the nodules constant or does it come and go?
-nosebleeds,When did the nosebleeds start?,How severe is the nosebleeds on a scale from 1 to 10?,Does anything make the nosebleeds better or worse?,Is the nosebleeds constant or does it come and go?
-numbness,When did the numbness start?,How severe is the numbness on a scale from 1 to 10?,Does anything make the numbness better or worse?,Is the numbness constant or does it come and go?
-oily skin,When did the oily skin start?,How severe is the oily skin on a scale from 1 to 10?,Does anything make the oily skin better or worse?,Is the oily skin constant or does it come and go?
-oozing,When did the oozing start?,How severe is the oozing on a scale from 1 to 10?,Does anything make the oozing better or worse?,Is the oozing constant or does it come and go?
-pain during bowel movements,When did the pain during bowel movements start?,How severe is the pain during bowel movements on a scale from 1 to 10?,Does anything make the pain during bowel movements better or worse?,Is the pain during bowel movements constant or does it come and go?
-pale stools,When did the pale stools start?,How severe is the pale stools on a scale from 1 to 10?,Does anything make the pale stools better or worse?,Is the pale stools constant or does it come and go?
-pimples,When did the pimples start?,How severe is the pimples on a scale from 1 to 10?,Does anything make the pimples better or worse?,Is the pimples constant or does it come and go?
-rash,When did the rash start?,How severe is the rash on a scale from 1 to 10?,Does anything make the rash better or worse?,Is the rash constant or does it come and go?
-red scaly plaques,When did the red scaly plaques start?,How severe is the red scaly plaques on a scale from 1 to 10?,Does anything make the red scaly plaques better or worse?,Is the red scaly plaques constant or does it come and go?
-red sores,When did the red sores start?,How severe is the red sores on a scale from 1 to 10?,Does anything make the red sores better or worse?,Is the red sores constant or does it come and go?
-reduced motion,When did the reduced motion start?,How severe is the reduced motion on a scale from 1 to 10?,Does anything make the reduced motion better or worse?,Is the reduced motion constant or does it come and go?
-runny nose,When did the runny nose start?,How severe is the runny nose on a scale from 1 to 10?,Does anything make the runny nose better or worse?,Is the runny nose constant or does it come and go?
-scarring,When did the scarring start?,How severe is the scarring on a scale from 1 to 10?,Does anything make the scarring better or worse?,Is the scarring constant or does it come and go?
-shortness of breath,When did the shortness of breath start?,How severe is the shortness of breath on a scale from 1 to 10?,Does anything make the shortness of breath better or worse?,Is the shortness of breath constant or does it come and go?
-slow wounds,When did the slow wounds start?,How severe is the slow wounds on a scale from 1 to 10?,Does anything make the slow wounds better or worse?,Is the slow wounds constant or does it come and go?
-sneezing,When did the sneezing start?,How severe is the sneezing on a scale from 1 to 10?,Does anything make the sneezing better or worse?,Is the sneezing constant or does it come and go?
-sore throat,When did the sore throat start?,How severe is the sore throat on a scale from 1 to 10?,Does anything make the sore throat better or worse?,Is the sore throat constant or does it come and go?
-stiffness,When did the stiffness start?,How severe is the stiffness on a scale from 1 to 10?,Does anything make the stiffness better or worse?,Is the stiffness constant or does it come and go?
-sweating,When did the sweating start?,How severe is the sweating on a scale from 1 to 10?,Does anything make the sweating better or worse?,Is the sweating constant or does it come and go?
-swelling,When did the swelling start?,How severe is the swelling on a scale from 1 to 10?,Does anything make the swelling better or worse?,Is the swelling constant or does it come and go?
-swollen lymph nodes,When did the swollen lymph nodes start?,How severe is the swollen lymph nodes on a scale from 1 to 10?,Does anything make the swollen lymph nodes better or worse?,Is the swollen lymph nodes constant or does it come and go?
-tingling in arms,When did the tingling in arms start?,How severe is the tingling in arms on a scale from 1 to 10?,Does anything make the tingling in arms better or worse?,Is the tingling in arms constant or does it come and go?
-trembling,When did the trembling start?,How severe is the trembling on a scale from 1 to 10?,Does anything make the trembling better or worse?,Is the trembling constant or does it come and go?
-triggered by head movements,When did the triggered by head movements start?,How severe is the triggered by head movements on a scale from 1 to 10?,Does anything make the triggered by head movements better or worse?,Is the triggered by head movements constant or does it come and go?
-weakness,When did the weakness start?,How severe is the weakness on a scale from 1 to 10?,Does anything make the weakness better or worse?,Is the weakness constant or does it come and go?
-weight gain,When did the weight gain start?,How severe is the weight gain on a scale from 1 to 10?,Does anything make the weight gain better or worse?,Is the weight gain constant or does it come and go?
+abdominal pain,When did the abdominal pain start?,How severe is the abdominal pain on a scale ?,Does anything make the abdominal pain better or worse?,Is the abdominal pain constant or does it come and go?
+acid regurgitation,When did the acid regurgitation start?,How severe is the acid regurgitation on a scale ?,Does anything make the acid regurgitation better or worse?,Is the acid regurgitation constant or does it come and go?
+anal itching,When did the anal itching start?,How severe is the anal itching on a scale ?,Does anything make the anal itching better or worse?,Is the anal itching constant or does it come and go?
+blackheads,When did the blackheads start?,How severe is the blackheads on a scale ?,Does anything make the blackheads better or worse?,Is the blackheads constant or does it come and go?
+bleeding,When did the bleeding start?,How severe is the bleeding on a scale ?,Does anything make the bleeding better or worse?,Is the bleeding constant or does it come and go?
+blisters,When did the blisters start?,How severe is the blisters on a scale ?,Does anything make the blisters better or worse?,Is the blisters constant or does it come and go?
+bloating,When did the bloating start?,How severe is the bloating on a scale ?,Does anything make the bloating better or worse?,Is the bloating constant or does it come and go?
+blurred vision,When did the blurred vision start?,How severe is the blurred vision on a scale ?,Does anything make the blurred vision better or worse?,Is the blurred vision constant or does it come and go?
+brief spinning sensations,When did the brief spinning sensations start?,How severe is the brief spinning sensations on a scale ?,Does anything make the brief spinning sensations better or worse?,Is the brief spinning sensations constant or does it come and go?
+chest pain,When did the chest pain start?,How severe is the chest pain on a scale ?,Does anything make the chest pain better or worse?,Is the chest pain constant or does it come and go?
+chills,When did the chills start?,How severe is the chills on a scale ?,Does anything make the chills better or worse?,Is the chills constant or does it come and go?
+cold intolerance,When did the cold intolerance start?,How severe is the cold intolerance on a scale ?,Does anything make the cold intolerance better or worse?,Is the cold intolerance constant or does it come and go?
+confusion,When did the confusion start?,How severe is the confusion on a scale ?,Does anything make the confusion better or worse?,Is the confusion constant or does it come and go?
+congestion,When did the congestion start?,How severe is the congestion on a scale ?,Does anything make the congestion better or worse?,Is the congestion constant or does it come and go?
+constipation,When did the constipation start?,How severe is the constipation on a scale ?,Does anything make the constipation better or worse?,Is the constipation constant or does it come and go?
+cough,When did the cough start?,How severe is the cough on a scale ?,Does anything make the cough better or worse?,Is the cough constant or does it come and go?
+crepitus,When did the crepitus start?,How severe is the crepitus on a scale ?,Does anything make the crepitus better or worse?,Is the crepitus constant or does it come and go?
+dark urine,When did the dark urine start?,How severe is the dark urine on a scale ?,Does anything make the dark urine better or worse?,Is the dark urine constant or does it come and go?
+dizziness,When did the dizziness start?,How severe is the dizziness on a scale ?,Does anything make the dizziness better or worse?,Is the dizziness constant or does it come and go?
+dry skin,When did the dry skin start?,How severe is the dry skin on a scale ?,Does anything make the dry skin better or worse?,Is the dry skin constant or does it come and go?
+fatigue,When did the fatigue start?,How severe is the fatigue on a scale ?,Does anything make the fatigue better or worse?,Is the fatigue constant or does it come and go?
+fever,When did the fever start?,How severe is the fever on a scale ?,Does anything make the fever better or worse?,Is the fever constant or does it come and go?
+frequent urination,When did the frequent urination start?,How severe is the frequent urination on a scale ?,Does anything make the frequent urination better or worse?,Is the frequent urination constant or does it come and go?
+headache,When did the headache start?,How severe is the headache on a scale ?,Does anything make the headache better or worse?,Is the headache constant or does it come and go?
+heartburn,When did the heartburn start?,How severe is the heartburn on a scale ?,Does anything make the heartburn better or worse?,Is the heartburn constant or does it come and go?
+hives,When did the hives start?,How severe is the hives on a scale ?,Does anything make the hives better or worse?,Is the hives constant or does it come and go?
+hoarseness,When did the hoarseness start?,How severe is the hoarseness on a scale ?,Does anything make the hoarseness better or worse?,Is the hoarseness constant or does it come and go?
+honeycolored crusts,When did the honeycolored crusts start?,How severe is the honeycolored crusts on a scale ?,Does anything make the honeycolored crusts better or worse?,Is the honeycolored crusts constant or does it come and go?
+hunger,When did the hunger start?,How severe is the hunger on a scale ?,Does anything make the hunger better or worse?,Is the hunger constant or does it come and go?
+imbalance,When did the imbalance start?,How severe is the imbalance on a scale ?,Does anything make the imbalance better or worse?,Is the imbalance constant or does it come and go?
+increased thirst,When did the increased thirst start?,How severe is the increased thirst on a scale ?,Does anything make the increased thirst better or worse?,Is the increased thirst constant or does it come and go?
+itching,When did the itching start?,How severe is the itching on a scale ?,Does anything make the itching better or worse?,Is the itching constant or does it come and go?
+itchy eyes,When did the itchy eyes start?,How severe is the itchy eyes on a scale ?,Does anything make the itchy eyes better or worse?,Is the itchy eyes constant or does it come and go?
+itchy rash,When did the itchy rash start?,How severe is the itchy rash on a scale ?,Does anything make the itchy rash better or worse?,Is the itchy rash constant or does it come and go?
+jaundice,When did the jaundice start?,How severe is the jaundice on a scale ?,Does anything make the jaundice better or worse?,Is the jaundice constant or does it come and go?
+joint pain,When did the joint pain start?,How severe is the joint pain on a scale ?,Does anything make the joint pain better or worse?,Is the joint pain constant or does it come and go?
+nail pitting,When did the nail pitting start?,How severe is the nail pitting on a scale ?,Does anything make the nail pitting better or worse?,Is the nail pitting constant or does it come and go?
+nausea,When did the nausea start?,How severe is the nausea on a scale ?,Does anything make the nausea better or worse?,Is the nausea constant or does it come and go?
+neck pain,When did the neck pain start?,How severe is the neck pain on a scale ?,Does anything make the neck pain better or worse?,Is the neck pain constant or does it come and go?
+nodules,When did the nodules start?,How severe is the nodules on a scale ?,Does anything make the nodules better or worse?,Is the nodules constant or does it come and go?
+nosebleeds,When did the nosebleeds start?,How severe is the nosebleeds on a scale ?,Does anything make the nosebleeds better or worse?,Is the nosebleeds constant or does it come and go?
+numbness,When did the numbness start?,How severe is the numbness on a scale ?,Does anything make the numbness better or worse?,Is the numbness constant or does it come and go?
+oily skin,When did the oily skin start?,How severe is the oily skin on a scale ?,Does anything make the oily skin better or worse?,Is the oily skin constant or does it come and go?
+oozing,When did the oozing start?,How severe is the oozing on a scale ?,Does anything make the oozing better or worse?,Is the oozing constant or does it come and go?
+pain during bowel movements,When did the pain during bowel movements start?,How severe is the pain during bowel movements on a scale ?,Does anything make the pain during bowel movements better or worse?,Is the pain during bowel movements constant or does it come and go?
+pale stools,When did the pale stools start?,How severe is the pale stools on a scale ?,Does anything make the pale stools better or worse?,Is the pale stools constant or does it come and go?
+pimples,When did the pimples start?,How severe is the pimples on a scale ?,Does anything make the pimples better or worse?,Is the pimples constant or does it come and go?
+rash,When did the rash start?,How severe is the rash on a scale ?,Does anything make the rash better or worse?,Is the rash constant or does it come and go?
+red scaly plaques,When did the red scaly plaques start?,How severe is the red scaly plaques on a scale ?,Does anything make the red scaly plaques better or worse?,Is the red scaly plaques constant or does it come and go?
+red sores,When did the red sores start?,How severe is the red sores on a scale ?,Does anything make the red sores better or worse?,Is the red sores constant or does it come and go?
+reduced motion,When did the reduced motion start?,How severe is the reduced motion on a scale ?,Does anything make the reduced motion better or worse?,Is the reduced motion constant or does it come and go?
+runny nose,When did the runny nose start?,How severe is the runny nose on a scale ?,Does anything make the runny nose better or worse?,Is the runny nose constant or does it come and go?
+scarring,When did the scarring start?,How severe is the scarring on a scale ?,Does anything make the scarring better or worse?,Is the scarring constant or does it come and go?
+shortness of breath,When did the shortness of breath start?,How severe is the shortness of breath on a scale ?,Does anything make the shortness of breath better or worse?,Is the shortness of breath constant or does it come and go?
+slow wounds,When did the slow wounds start?,How severe is the slow wounds on a scale ?,Does anything make the slow wounds better or worse?,Is the slow wounds constant or does it come and go?
+sneezing,When did the sneezing start?,How severe is the sneezing on a scale ?,Does anything make the sneezing better or worse?,Is the sneezing constant or does it come and go?
+sore throat,When did the sore throat start?,How severe is the sore throat on a scale ?,Does anything make the sore throat better or worse?,Is the sore throat constant or does it come and go?
+stiffness,When did the stiffness start?,How severe is the stiffness on a scale ?,Does anything make the stiffness better or worse?,Is the stiffness constant or does it come and go?
+sweating,When did the sweating start?,How severe is the sweating on a scale ?,Does anything make the sweating better or worse?,Is the sweating constant or does it come and go?
+swelling,When did the swelling start?,How severe is the swelling on a scale ?,Does anything make the swelling better or worse?,Is the swelling constant or does it come and go?
+swollen lymph nodes,When did the swollen lymph nodes start?,How severe is the swollen lymph nodes on a scale ?,Does anything make the swollen lymph nodes better or worse?,Is the swollen lymph nodes constant or does it come and go?
+tingling in arms,When did the tingling in arms start?,How severe is the tingling in arms on a scale ?,Does anything make the tingling in arms better or worse?,Is the tingling in arms constant or does it come and go?
+trembling,When did the trembling start?,How severe is the trembling on a scale ?,Does anything make the trembling better or worse?,Is the trembling constant or does it come and go?
+triggered by head movements,When did the triggered by head movements start?,How severe is the triggered by head movements on a scale ?,Does anything make the triggered by head movements better or worse?,Is the triggered by head movements constant or does it come and go?
+weakness,When did the weakness start?,How severe is the weakness on a scale ?,Does anything make the weakness better or worse?,Is the weakness constant or does it come and go?
+weight gain,When did the weight gain start?,How severe is the weight gain on a scale ?,Does anything make the weight gain better or worse?,Is the weight gain constant or does it come and go?
+appetite changes,When did the appetite changes start?,How severe is the appetite changes on a scale ?,Does anything make the appetite changes better or worse?,Is the appetite changes constant or does it come and go?
+back pain,When did the back pain start?,How severe is the back pain on a scale ?,Does anything make the back pain better or worse?,Is the back pain constant or does it come and go?
+burping,When did the burping start?,How severe is the burping on a scale ?,Does anything make the burping better or worse?,Is the burping constant or does it come and go?
+cognitive issues,When did the cognitive issues start?,How severe is the cognitive issues on a scale ?,Does anything make the cognitive issues better or worse?,Is the cognitive issues constant or does it come and go?
+cracking,When did the cracking start?,How severe is the cracking on a scale ?,Does anything make the cracking better or worse?,Is the cracking constant or does it come and go?
+diarrhea,When did the diarrhea start?,How severe is the diarrhea on a scale ?,Does anything make the diarrhea better or worse?,Is the diarrhea constant or does it come and go?
+difficulty climbing stairs,When did the difficulty climbing stairs start?,How severe is the difficulty climbing stairs on a scale ?,Does anything make the difficulty climbing stairs better or worse?,Is the difficulty climbing stairs constant or does it come and go?
+difficulty swallowing,When did the difficulty swallowing start?,How severe is the difficulty swallowing on a scale ?,Does anything make the difficulty swallowing better or worse?,Is the difficulty swallowing constant or does it come and go?
+double vision,When did the double vision start?,How severe is the double vision on a scale ?,Does anything make the double vision better or worse?,Is the double vision constant or does it come and go?
+dry mouth,When did the dry mouth start?,How severe is the dry mouth on a scale ?,Does anything make the dry mouth better or worse?,Is the dry mouth constant or does it come and go?
+early satiety,When did the early satiety start?,How severe is the early satiety on a scale ?,Does anything make the early satiety better or worse?,Is the early satiety constant or does it come and go?
+eye strain,When did the eye strain start?,How severe is the eye strain on a scale ?,Does anything make the eye strain better or worse?,Is the eye strain constant or does it come and go?
+facial pain,When did the facial pain start?,How severe is the facial pain on a scale ?,Does anything make the facial pain better or worse?,Is the facial pain constant or does it come and go?
+gas,When did the gas start?,How severe is the gas on a scale ?,Does anything make the gas better or worse?,Is the gas constant or does it come and go?
+heel pain,When did the heel pain start?,How severe is the heel pain on a scale ?,Does anything make the heel pain better or worse?,Is the heel pain constant or does it come and go?
+light sensitivity,When did the light sensitivity start?,How severe is the light sensitivity on a scale ?,Does anything make the light sensitivity better or worse?,Is the light sensitivity constant or does it come and go?
+lower abdominal pain,When did the lower abdominal pain start?,How severe is the lower abdominal pain on a scale ?,Does anything make the lower abdominal pain better or worse?,Is the lower abdominal pain constant or does it come and go?
+muscle aches,When did the muscle aches start?,How severe is the muscle aches on a scale ?,Does anything make the muscle aches better or worse?,Is the muscle aches constant or does it come and go?
+muscle pain,When did the muscle pain start?,How severe is the muscle pain on a scale ?,Does anything make the muscle pain better or worse?,Is the muscle pain constant or does it come and go?
+pain radiating to arm,When did the pain radiating to arm start?,How severe is the pain radiating to arm on a scale ?,Does anything make the pain radiating to arm better or worse?,Is the pain radiating to arm constant or does it come and go?
+palpitations,When did the palpitations start?,How severe is the palpitations on a scale ?,Does anything make the palpitations better or worse?,Is the palpitations constant or does it come and go?
+postnasal drip,When did the postnasal drip start?,How severe is the postnasal drip on a scale ?,Does anything make the postnasal drip better or worse?,Is the postnasal drip constant or does it come and go?
+rash,When did the rash start?,How severe is the rash on a scale ?,Does anything make the rash better or worse?,Is the rash constant or does it come and go?
+ring-shaped rash,When did the ring-shaped rash start?,How severe is the ring-shaped rash on a scale ?,Does anything make the ring-shaped rash better or worse?,Is the ring-shaped rash constant or does it come and go?
+scalp tightness,When did the scalp tightness start?,How severe is the scalp tightness on a scale ?,Does anything make the scalp tightness better or worse?,Is the scalp tightness constant or does it come and go?
+scaling,When did the scaling start?,How severe is the scaling on a scale ?,Does anything make the scaling better or worse?,Is the scaling constant or does it come and go?
+sleep disturbances,When did the sleep disturbances start?,How severe is the sleep disturbances on a scale ?,Does anything make the sleep disturbances better or worse?,Is the sleep disturbances constant or does it come and go?
+sputum,When did the sputum start?,How severe is the sputum on a scale ?,Does anything make the sputum better or worse?,Is the sputum constant or does it come and go?
+throbbing headache,When did the throbbing headache start?,How severe is the throbbing headache on a scale ?,Does anything make the throbbing headache better or worse?,Is the throbbing headache constant or does it come and go?
+tingling,When did the tingling start?,How severe is the tingling on a scale ?,Does anything make the tingling better or worse?,Is the tingling constant or does it come and go?
+upper abdominal discomfort,When did the upper abdominal discomfort start?,How severe is the upper abdominal discomfort on a scale ?,Does anything make the upper abdominal discomfort better or worse?,Is the upper abdominal discomfort constant or does it come and go?
+vomiting,When did the vomiting start?,How severe is the vomiting on a scale ?,Does anything make the vomiting better or worse?,Is the vomiting constant or does it come and go?
+visible twisted veins,When did the visible twisted veins start?,How severe is the visible twisted veins on a scale ?,Does anything make the visible twisted veins better or worse?,Is the visible twisted veins constant or does it come and go?
+vision loss,When did the vision loss start?,How severe is the vision loss on a scale ?,Does anything make the vision loss better or worse?,Is the vision loss constant or does it come and go?
+weakness,When did the weakness start?,How severe is the weakness on a scale ?,Does anything make the weakness better or worse?,Is the weakness constant or does it come and go?

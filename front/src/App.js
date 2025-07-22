@@ -4,6 +4,7 @@ import DemographicsForm from "./pages/demographicsform";
 import MedicalAssistant from "./pages/medicalassistant";
 import { Toaster } from "react-hot-toast";
 import ConditionInfoPage from "./pages/conditionInfoPage";
+import PostDiagnosisChat from "./pages/PostDiagnosisChat"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/demographics" element={<DemographicsForm />} />
         <Route path="/assistant" element={<MedicalAssistant />} />
         <Route path="/condition-info" element={<ConditionInfoPage />} />
+        <Route path="/post-diagnosis-chat" element={<PostDiagnosisChat />} />
       </Routes>
     </>
   );

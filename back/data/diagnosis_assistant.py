@@ -4,7 +4,6 @@ import time
 import warnings
 import pandas as pd
 import spacy
-from rapidfuzz import process
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -317,7 +316,6 @@ synonym_map = {
     "vaginal burning": "burning",
 
     # Tension Headache
-    "dull headache": "dull head pain",
     "tight scalp": "scalp tightness",
     "neck stiffness": "neck stiffness",
 

@@ -5,6 +5,7 @@ import SymptomInputForm from "../components/symptominputform";
 import ExtractedSymptoms from "../components/extractedsymptoms";
 import FollowUpChat from "../components/followupchat";
 import DiagnosisResult from "../components/DiagnosisResult";
+import ProgressTracker from "../components/ProgressTracker";
 
 const API_URL = "http://127.0.0.1:8000";
 
@@ -44,14 +45,13 @@ function MedicalAssistant() {
   };
 
   const demographics =
-      JSON.parse(localStorage.getItem("user_demographics")) || {};
+    JSON.parse(localStorage.getItem("user_demographics")) || {};
   const userName = demographics.name || "there";
 
   const handleFollowUpComplete = async (qaData, notes = "") => {
     setFollowUpQA(qaData);
     setExtraNotes(notes);
 
-    
     const payload = {
       symptoms: symptomText,
       followup_answers: qaData,
@@ -89,8 +89,23 @@ function MedicalAssistant() {
         🩺 Smart AI Medical Assistant
       </h1>
       <h2 className="text-xl text-center text-gray-800 mb-6">
-          Hello, {userName}! Let's get started with your diagnosis.
+        Hello, {userName}! Let's get started with your diagnosis.
       </h2>
+
+      <ProgressTracker
+        step={
+          step === "input"
+            ? 0
+            : step === "extracted"
+            ? 1
+            : step === "followup"
+            ? 2
+            : step === "diagnosis"
+            ? 3
+            : 0
+        }
+      />
+
       {step === "input" && (
         <SymptomInputForm onSubmit={handleSymptomExtraction} />
       )}

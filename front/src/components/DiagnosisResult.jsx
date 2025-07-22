@@ -69,25 +69,31 @@ export default function DiagnosisResult({
   };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 bg-white rounded-xl shadow-md p-6 text-center">
-      <h2 className="text-2xl font-bold text-purple-700 mb-6">
+    <div className="max-w-2xl mx-auto mt-10 bg-sky-50 dark:bg-gray-900 rounded-xl shadow-lg p-6 text-center border dark:border-gray-700">
+      <h2 className="text-2xl font-bold text-sky-700 dark:text-sky-300 mb-6">
         🧠 Final Diagnosis
       </h2>
 
       {loading ? (
-        <p className="text-gray-600 italic">Generating diagnosis...</p>
+        <p className="text-gray-600 dark:text-gray-400 italic">
+          Generating diagnosis...
+        </p>
       ) : typeof diagnosis === "string" && diagnosis.startsWith("❌") ? (
-        <p className="text-red-600 font-semibold">{diagnosis}</p>
+        <p className="text-red-600 dark:text-red-400 font-semibold">
+          {diagnosis}
+        </p>
       ) : (
         parsedDiagnosis.map((cond, idx) => (
           <div
             key={idx}
-            className="mb-6 p-4 border-l-4 border-purple-600 bg-purple-50 rounded-md text-left"
+            className="mb-6 p-4 border-l-4 border-sky-500 dark:border-sky-400 bg-white dark:bg-gray-800 rounded-md text-left shadow-sm"
           >
-            <h3 className="text-xl font-semibold text-purple-800 mb-2">
+            <h3 className="text-lg font-semibold text-indigo-800 dark:text-indigo-300 mb-2">
               🩺 {cond.name}
             </h3>
-            <p className="text-gray-700 whitespace-pre-line">{cond.reason}</p>
+            <p className="text-gray-800 dark:text-gray-300 whitespace-pre-line font-mono leading-relaxed">
+              {cond.reason}
+            </p>
           </div>
         ))
       )}
@@ -95,7 +101,7 @@ export default function DiagnosisResult({
       {!loading && !diagnosis.startsWith("❌") && (
         <button
           onClick={handleSeeNextSteps}
-          className="mt-6 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+          className="mt-6 px-6 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg transition font-semibold"
         >
           📋 What Should I Do Now?
         </button>

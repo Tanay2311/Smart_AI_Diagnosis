@@ -1,3 +1,5 @@
+# main.py
+
 from fastapi import FastAPI, Request, Body
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -7,34 +9,39 @@ from models import DiagnosisRequest
 from data.condition_info_loader import condition_database
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
-from fastapi import Request
 from fastapi.exception_handlers import request_validation_exception_handler
+from chatbot import query_gemini_from_messages, reset_session_memory
 
 
-
+# -------------------- App Setup --------------------
 app = FastAPI(
     title="Smart AI Medical Assistant Backend",
     description="FastAPI backend to extract symptoms and generate diagnosis using RAG + LLM",
     version="1.0.0"
 )
 
-# Allow frontend to call the backend 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"], 
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# -------------------- Request Schema --------------------
+# -------------------- Request Schemas --------------------
 class SymptomInput(BaseModel):
     text: str
 
 class ConditionQuery(BaseModel):
     conditions: List[str]
 
-
+class ChatMessage(BaseModel):
+    role: str
+    content: str
+ 
+class ChatRequest(BaseModel):
+    session_id: str
+    messages: List[ChatMessage]
 
 # -------------------- Endpoints --------------------
 @app.get("/")
@@ -54,7 +61,6 @@ def get_followups(symptoms: List[str] = Body(...)):
         result[symptom] = [q for q in qs if isinstance(q, str) and q.strip()]
     return result
 
-
 @app.post("/diagnose")
 def diagnose(payload: DiagnosisRequest):
     print("🔍 Received diagnosis request:", payload)
@@ -69,14 +75,9 @@ def diagnose(payload: DiagnosisRequest):
     )
     return {"diagnosis": result}
 
-@app.get("/routes")
-def list_routes():
-    return [route.path for route in app.routes]
-
 @app.post("/condition_info")
 def get_condition_info(query: ConditionQuery):
     results = []
-
     for cond in query.conditions:
         key = cond.lower().strip()
         if key in condition_database:
@@ -98,8 +99,61 @@ def get_condition_info(query: ConditionQuery):
             })
     return results
 
+@app.get("/routes")
+def list_routes():
+    return [route.path for route in app.routes]
 
+from chatbot import query_gemini_from_messages, reset_session_memory
 
+ 
+class ChatMessage(BaseModel):
+
+    role: str
+
+    content: str
+ 
+class ChatRequest(BaseModel):
+
+    session_id: str
+
+    messages: List[ChatMessage]
+ 
+@app.post("/chat_llm")
+
+def chat_with_llm(chat: ChatRequest):
+
+    print("📥 Incoming chat payload:", chat)
+
+    try:
+
+        messages = [{"role": msg.role, "content": msg.content} for msg in chat.messages]
+
+        reply_text = query_gemini_from_messages(messages, chat.session_id)
+
+        return {"reply": reply_text}
+
+    except Exception as e:
+
+        print("⚠️ Error in Gemini chat:", e)
+
+        return JSONResponse(status_code=500, content={"error": "LLM processing failed."})
+ 
+@app.post("/reset_session")
+
+def reset(chat: dict = Body(...)):
+
+    session_id = chat.get("session_id")
+
+    if not session_id:
+
+        return JSONResponse(status_code=400, content={"error": "Missing session_id"})
+
+    reset_session_memory(session_id)
+
+    return {"message": f"Session '{session_id}' reset successfully."}
+
+ 
+ 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     print("❌ Validation error:", exc.errors())
