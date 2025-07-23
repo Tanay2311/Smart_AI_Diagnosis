@@ -1,6 +1,7 @@
 import os
 import re
 import time
+from typing import List
 import warnings
 import pandas as pd
 import spacy
@@ -112,8 +113,7 @@ synonym_map = {
     "pounding heart": "palpitations",
 
     # ==================== Cold Symptoms ====================
-    "runny nose": "rhinorrhea",
-    "sneezing": "rhinorrhea",
+    "sneezing": "sneezing",
     "sniffles": "rhinorrhea",
     "drippy nose": "rhinorrhea",
     "stuffy nose": "nasal congestion",
@@ -127,7 +127,6 @@ synonym_map = {
     "cough with phlegm": "productive cough",
     "green mucus": "productive cough",
     "phlegm": "productive cough",
-    "mucus": "productive cough",
 
     # ==================== Skin ====================
     "red spots": "rash",
@@ -138,7 +137,6 @@ synonym_map = {
     "skin irritation": "rash",
     "redness on skin": "rash",
     "peeling skin": "rash",
-    "dry skin": "rash",
 
     # ==================== Breathing ====================
     "short of breath": "shortness of breath",
@@ -223,7 +221,6 @@ synonym_map = {
     "heart fluttering": "palpitations",
 
     # ==================== Musculoskeletal ====================
-    "joint pain": "arthralgia",
     "knee pain": "joint pain",
     "shoulder pain": "joint pain",
     "muscle pain": "myalgia",
@@ -235,7 +232,6 @@ synonym_map = {
     "irregular periods": "menstrual irregularity",
     "heavy periods": "menorrhagia",
     "painful periods": "dysmenorrhea",
-    "vaginal discharge": "discharge",
     "burning while urinating": "dysuria",
 
     # Muscle Strain
@@ -334,10 +330,9 @@ synonym_map = {
     "cracked skin": "cracking",
 
      # Bronchitis
-    "productive cough": "cough",
+    "cough": "cough",
     "wheezing": "wheezing",
     "mucus": "mucus",
-    "chest discomfort": "chest discomfort",
 
     # Influenza
     "muscle aches": "muscle aches",
@@ -347,26 +342,21 @@ synonym_map = {
     "high temperature": "high body temp",
     "dry skin": "dry skin",
     "rapid heartbeat": "rapid pulse",
-    "heat exhaustion": "high body temp",
 
     # Food Poisoning
     "stomach cramps": "abdominal cramps",
-    "loose motion": "diarrhea",
 
     # Lactose Intolerance
     "milk allergy": "lactose intolerance",
-    "gas": "gas",
-    "bloating": "bloating",
+    
 
     # IBS
     "constipation": "constipation",
-    "diarrhea": "diarrhea",
     "gut pain": "abdominal pain",
 
     # Seasonal Allergies
     "hay fever": "seasonal allergies",
     "runny nose": "runny nose",
-    "nasal congestion": "congestion",
 
     # Depression
     "low mood": "low mood",
@@ -399,7 +389,6 @@ synonym_map = {
 
     # Tonsillitis
     "pain swallowing": "difficulty swallowing",
-    "throat pain": "sore throat",
     "swollen tonsils": "swollen tonsils",
 
     # Ringworm
@@ -426,31 +415,34 @@ modifiers = [
 
 # -------------------- Symptom Extraction --------------------
 from rapidfuzz import process, fuzz
-
-def extract_symptoms(text: str, threshold: int = 92):
+def extract_symptoms(text: str):
     text_lower = text.lower()
+    extracted = set()
+
+    # 1. Check for synonyms (keys) and map to standard terms (values)
+    for synonym_key, standard_value in synonym_map.items():
+        # Use regex for whole word matching to avoid partial matches
+        if re.search(rf'\b{re.escape(synonym_key)}\b', text_lower):
+            extracted.add(standard_value)
+
+    # 2. Check for the standard terms (values) themselves
+    # Get a unique set of all standard terms from the map
+    all_standard_terms = set(synonym_map.values())
+    for term in all_standard_terms:
+        if re.search(rf'\b{re.escape(term)}\b', text_lower):
+            extracted.add(term)
+    
+    # 3. Add NER-based entities (optional but good for coverage)
     doc = nlp(text)
+    for ent in doc.ents:
+        if ent.label_ == "DISEASE":
+            # Normalize the NER entity if it's a known synonym
+            ner_symptom = ent.text.lower()
+            standard_term = synonym_map.get(ner_symptom, ner_symptom)
+            extracted.add(standard_term)
 
-    ner_extracted = [ent.text.lower() for ent in doc.ents if ent.label_ == "DISEASE"]
+    return list(extracted)
 
-    synonyms_found = []
-    for key in synonym_map:
-        if key in text_lower:
-            synonyms = synonym_map[key]
-            if isinstance(synonyms, list):
-                synonyms_found.extend(synonyms)
-            else:
-                synonyms_found.append(synonyms)
-
-    keyword_matched = [sym for sym in symptom_vocab if re.search(rf'\b{re.escape(sym)}\b', text_lower)]
-
-
-    # Flatten and deduplicate
-    all_raw = ner_extracted + synonyms_found + keyword_matched
-    flattened = [item for item in all_raw if isinstance(item, str)]
-    combined_raw = list(set(flattened))
-
-    return combined_raw
 
 
 # -------------------- Follow-Up Questions --------------------

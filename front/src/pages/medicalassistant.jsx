@@ -84,57 +84,61 @@ function MedicalAssistant() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 p-8">
-      <h1 className="text-3xl font-bold text-center text-purple-700 mb-8">
-        🩺 Smart AI Medical Assistant
-      </h1>
-      <h2 className="text-xl text-center text-gray-800 mb-6">
-        Hello, {userName}! Let's get started with your diagnosis.
-      </h2>
+  <div className="min-h-screen bg-blue-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-xl rounded-2xl p-8 space-y-6 border border-gray-200 dark:border-gray-700">
+        <h1 className="text-3xl font-bold text-center text-purple-700 dark:text-purple-400">
+          🩺 Smart AI Medical Assistant
+        </h1>
+        <h2 className="text-lg text-center text-gray-700 dark:text-gray-300">
+          Hello, {userName}! Let's get started with your diagnosis.
+        </h2>
 
-      <ProgressTracker
-        step={
-          step === "input"
-            ? 0
-            : step === "extracted"
-            ? 1
-            : step === "followup"
-            ? 2
-            : step === "diagnosis"
-            ? 3
-            : 0
-        }
-      />
-
-      {step === "input" && (
-        <SymptomInputForm onSubmit={handleSymptomExtraction} />
-      )}
-
-      {step === "extracted" && (
-        <ExtractedSymptoms
-          symptoms={extractedSymptoms}
-          onContinue={handleContinueToFollowUp}
-          onBack={handleBackToSymptoms}
+        <ProgressTracker
+          step={
+            step === "input"
+              ? 0
+              : step === "extracted"
+              ? 1
+              : step === "followup"
+              ? 2
+              : step === "diagnosis"
+              ? 3
+              : 0
+          }
         />
-      )}
 
-      {step === "followup" && (
-        <FollowUpChat
-          symptoms={extractedSymptoms}
-          onComplete={handleFollowUpComplete}
-          onBack={handleBackToExtracted}
-          onRestartFollowUp={() => setFollowUpQA({})}
-        />
-      )}
+        <div className="mt-4">
+          {step === "input" && (
+            <SymptomInputForm onSubmit={handleSymptomExtraction} />
+          )}
 
-      {step === "diagnosis" && diagnosisResult && (
-        <DiagnosisResult
-          symptomText={symptomText}
-          followUpAnswers={followUpQA}
-          extraNotes={extraNotes}
-          onRestart={handleRestart}
-        />
-      )}
+          {step === "extracted" && (
+            <ExtractedSymptoms
+              symptoms={extractedSymptoms}
+              onContinue={handleContinueToFollowUp}
+              onBack={handleBackToSymptoms}
+            />
+          )}
+
+          {step === "followup" && (
+            <FollowUpChat
+              symptoms={extractedSymptoms}
+              onComplete={handleFollowUpComplete}
+              onBack={handleBackToExtracted}
+              onRestartFollowUp={() => setFollowUpQA({})}
+            />
+          )}
+
+          {step === "diagnosis" && diagnosisResult && (
+            <DiagnosisResult
+              symptomText={symptomText}
+              followUpAnswers={followUpQA}
+              extraNotes={extraNotes}
+              onRestart={handleRestart}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }
