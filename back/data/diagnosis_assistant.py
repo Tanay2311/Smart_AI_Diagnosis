@@ -46,367 +46,153 @@ def build_symptom_vocab(df):
 symptom_vocab = build_symptom_vocab(df)
 
 # -------------------- Synonym Map --------------------
+# REVISED synonym_map
+
 synonym_map = {
     # ==================== General ====================
     "tired": "fatigue",
     "exhausted": "fatigue",
-    "burned out": "fatigue",
     "worn out": "fatigue",
     "lethargic": "fatigue",
-    "groggy": "fatigue",
     "lack of energy": "fatigue",
-    "feeling weak": "fatigue",
+    "feeling weak": "fatigue", # Mapped to fatigue for general weakness
     "fatigued": "fatigue",
+    "tiredness": "fatigue",
     
     # ==================== Vision ====================
     "blurry vision": "blurred vision",
     "can't see clearly": "blurred vision",
     "dim vision": "blurred vision",
-    "spots in vision": "blurred vision",
-    "seeing spots": "blurred vision",
-    "floaters": "blurred vision",
+    "spots in vision": "floaters", # REFINED: 'floaters' is a more specific and useful term
+    "seeing spots": "floaters",
+    "floaters": "floaters",
     "flashes of light": "photopsia",
-    "vision fades": "blurred vision",
-    "vision problems": "blurred vision",
     "seeing double": "diplopia",
     "double vision": "diplopia",
     "crossed eyes": "strabismus",
-    "eye misalignment": "strabismus",
     "sensitive to light": "photophobia",
     "light sensitivity": "photophobia",
 
     # ==================== Headache / Nausea ====================
     "head pain": "headache",
-    "hurting head": "headache",
     "pounding head": "headache",
     "aching head": "headache",
-    "migraine": "headache",
+    "migraine": "headache", # Mapping a specific type to the general symptom
     "feel nauseous": "nausea",
     "queasy": "nausea",
     "sick to stomach": "nausea",
     "want to throw up": "nausea",
     "puke": "nausea",
-    "vomit": "nausea",
-    "throwing up": "nausea",
-    "retching": "nausea",
-    "green around the gills": "nausea",
-    "turned stomach": "nausea",
-
-    # ==================== Fever ====================
+    "vomit": "vomiting", # REFINED: Separated vomiting from nausea
+    "throwing up": "vomiting",
+    
+    # ==================== Fever / Chills ====================
     "feverish": "fever",
-    "burning up": "fever",
     "high temperature": "fever",
-    "hot body": "fever",
-    "hot flush": "fever",
     "temperature": "fever",
-    "chills": "fever",
+    "chills": "chills", # REFINED: 'chills' is a distinct symptom from fever
 
     # ==================== Chest ====================
     "chest tightness": "chest pain",
     "chest discomfort": "chest pain",
-    "burning in chest": "chest pain",
-    "tight chest": "chest pain",
     "pressure in chest": "chest pain",
-    "pain in chest when breathing": "chest pain",
     "squeezing chest": "chest pain",
     "heart racing": "palpitations",
     "pounding heart": "palpitations",
+    "heart fluttering": "palpitations",
 
-    # ==================== Cold Symptoms ====================
+    # ==================== Cold / Respiratory ====================
     "sneezing": "sneezing",
-    "sniffles": "rhinorrhea",
-    "drippy nose": "rhinorrhea",
+    "runny nose": "runny nose",
+    "sniffles": "runny nose",
+    "drippy nose": "runny nose",
     "stuffy nose": "nasal congestion",
     "congested": "nasal congestion",
-    "blocked nose": "nasal congestion",
-    "sore throat": "throat pain",
-    "scratchy throat": "throat pain",
+    "sore throat": "sore throat", # CHANGED: Standardized to 'sore throat'
+    "scratchy throat": "sore throat",
+    "throat pain": "sore throat",
     "hoarse voice": "hoarseness",
     "hoarseness": "hoarseness",
     "coughing": "cough",
-    "cough with phlegm": "productive cough",
-    "green mucus": "productive cough",
-    "phlegm": "productive cough",
-
+    "cough": "cough",
+    "phlegm": "sputum", # REFINED: Standardized to 'sputum'
+    "mucus": "sputum",
+    "green mucus": "sputum",
+    
     # ==================== Skin ====================
     "red spots": "rash",
-    "itchy skin": "rash",
-    "itchy spots": "rash",
+    "itchy skin": "itching", # REFINED: Separated itching from rash
+    "itching": "itching",
     "hives": "rash",
-    "skin bumps": "rash",
     "skin irritation": "rash",
-    "redness on skin": "rash",
-    "peeling skin": "rash",
-
+    
     # ==================== Breathing ====================
     "short of breath": "shortness of breath",
     "can't breathe": "shortness of breath",
-    "can't catch breath": "shortness of breath",
     "breathlessness": "shortness of breath",
-    "wheezing": "shortness of breath",
     "trouble breathing": "shortness of breath",
+    "wheezing": "wheezing", # REFINED: 'wheezing' is a distinct and important symptom
 
     # ==================== Dizziness ====================
     "feel dizzy": "dizziness",
     "feeling dizzy": "dizziness",
-    "spinning sensation": "dizziness",
+    "spinning sensation": "vertigo", # REFINED: More specific term
     "lightheaded": "dizziness",
-    "feel faint": "dizziness",
-    "loss of balance": "dizziness",
-
+    "feel faint": "presyncope", # REFINED: More specific term
+    
     # ==================== GI / Stomach ====================
     "stomach ache": "abdominal pain",
     "tummy pain": "abdominal pain",
     "belly pain": "abdominal pain",
-    "pain after eating": "abdominal pain",
+    "stomach cramps": "abdominal cramps",
+    "gut pain": "abdominal pain",
     "diarrhea": "diarrhea",
     "loose motion": "diarrhea",
     "constipated": "constipation",
     "bloated": "bloating",
     "gas": "bloating",
     "acid reflux": "heartburn",
-    "burning in stomach": "heartburn",
-    "loss of appetite": "anorexia",
-    "can’t eat": "anorexia",
-    "skipped meals": "anorexia",
-
+    "indigestion": "dyspepsia", # REFINED: More specific term
+    
     # ==================== Urinary ====================
-    "frequent urination": "polyuria",
-    "urinating often": "polyuria",
-    "excessive urination": "polyuria",
-    "always thirsty": "polydipsia",
-    "very thirsty": "polydipsia",
-    "excessive thirst": "polydipsia",
-    "painful urination": "dysuria",
-    "burning urination": "dysuria",
-    "burning when peeing": "dysuria",
-    "cloudy urine": "urinary tract infection",
+    "frequent urination": "frequent urination",
+    "urinating often": "frequent urination",
+    "always thirsty": "excessive thirst",
+    "very thirsty": "excessive thirst",
+    "painful urination": "painful urination",
+    "burning urination": "painful urination",
+    "burning when peeing": "painful urination",
+    "cloudy urine": "cloudy urine", # CHANGED: Mapped to symptom, not disease
     "getting up to pee at night": "nocturia",
 
     # ==================== Neurological ====================
-    "numbness": "paresthesia",
-    "tingling": "paresthesia",
-    "pins and needles": "paresthesia",
-    "hand numbness": "paresthesia",
-    "shaky": "tremors",
-    "trembling": "tremors",
-    "trembling hands": "tremors",
-    "hand tremors": "tremors",
-    "shaking hands": "tremors",
+    "numbness": "numbness", # REFINED: Kept simple term
+    "tingling": "tingling",
+    "pins and needles": "tingling",
+    "shaky": "tremor",
+    "trembling": "tremor",
     "muscle weakness": "weakness",
-    "feeling weak": "weakness",
     "weak limbs": "weakness",
-    "unsteady": "balance issues",
 
     # ==================== Psychological ====================
     "anxious": "anxiety",
     "nervous": "anxiety",
-    "panic attacks": "anxiety",
-    "low mood": "depression",
-    "sad": "depression",
+    "sad": "low mood",
     "disoriented": "confusion",
     "confused": "confusion",
-    "mental fog": "confusion",
-    "forgetfulness": "memory loss",
-    "can't concentrate": "concentration difficulty",
-    "sleep issues": "insomnia",
     "trouble sleeping": "insomnia",
 
-    # ==================== Cardiovascular ====================
-    "swollen feet": "edema",
-    "ankle swelling": "edema",
-    "leg swelling": "edema",
-    "fluid retention": "edema",
-    "pounding heart": "palpitations",
-    "heart fluttering": "palpitations",
-
     # ==================== Musculoskeletal ====================
-    "knee pain": "joint pain",
-    "shoulder pain": "joint pain",
-    "muscle pain": "myalgia",
-    "body ache": "myalgia",
-    "sore muscles": "myalgia",
+    "joint pain": "joint pain",
+    "muscle pain": "muscle pain",
+    "body ache": "muscle pain",
+    "sore muscles": "muscle pain",
     "stiff joints": "joint stiffness",
-
-    # ==================== Reproductive / Urinary ====================
-    "irregular periods": "menstrual irregularity",
-    "heavy periods": "menorrhagia",
-    "painful periods": "dysmenorrhea",
-    "burning while urinating": "dysuria",
-
-    # Muscle Strain
     "pulled muscle": "muscle strain",
-    "muscle tear": "muscle strain",
-    "strained muscle": "muscle strain",
-    "muscle injury": "muscle strain",
-    "muscle soreness": "muscle strain",
-
-    # Tendonitis
-    "tendon pain": "tendonitis",
-    "joint tendon pain": "tendonitis",
-    "tendinitis": "tendonitis",  # spelling variant
-    "tendon inflammation": "tendonitis",
-
-    # Myositis
-    "muscle inflammation": "myositis",
-    "muscle tenderness": "myositis",
-    "muscle fatigue": "myositis",
-    "difficulty climbing stairs": "myositis",
-
-    # Fibromyalgia
-    "chronic muscle pain": "fibromyalgia",
-    "widespread pain": "fibromyalgia",
-    "muscle ache all over": "fibromyalgia",
-    "fibro pain": "fibromyalgia",
-    "tender points": "fibromyalgia",
-    "body pain with fatigue": "fibromyalgia",
-
-    # Rhabdomyolysis
-    "dark urine after exercise": "rhabdomyolysis",
-    "muscle breakdown": "rhabdomyolysis",
-    "severe muscle pain": "rhabdomyolysis",
-    "muscle swelling": "rhabdomyolysis",
-    "rhabdo": "rhabdomyolysis",
-
-    # Muscle Cramp
-    "charley horse": "muscle cramp",
-    "leg cramp": "muscle cramp",
-    "sudden muscle pain": "muscle cramp",
-    "tight muscle": "muscle cramp",
-    "cramping": "muscle cramp",
-    "muscle spasm": "muscle cramp",
-
-    # Sinusitis
-    "facial pain": "facial pain",
-    "nasal congestion": "nasal congestion",
-    "stuffed nose": "nasal congestion",
-    "postnasal drip": "postnasal drip",
-
-    # Conjunctivitis
-    "red eyes": "red eyes",
-    "eye redness": "red eyes",
-    "eye discharge": "discharge",
-    "watery eyes": "tearing",
-    "itchy eyes": "itching",
-
-    # Otitis Media
-    "ear pain": "ear pain",
-    "earache": "ear pain",
-    "hearing loss": "hearing loss",
-    "irritability": "irritability",
-
-    # Anemia
-    "pallor": "pallor",
-    "dizziness": "dizziness",
-    "lightheadedness": "dizziness",
-    "tiredness": "fatigue",
-    "shortness of breath": "shortness of breath",
-
-    # Gallstones
-    "upper abdominal pain": "upper abdominal pain",
-    "gallbladder pain": "upper abdominal pain",
-
-    # Bacterial Vaginosis
-    "vaginal discharge": "vaginal discharge",
-    "vaginal odor": "odor",
-    "vaginal burning": "burning",
-
-    # Tension Headache
-    "tight scalp": "scalp tightness",
-    "neck stiffness": "neck stiffness",
-
-    # Plantar Fasciitis
+    "tendon pain": "tendon pain", # CHANGED: Mapped to symptom, not disease
     "heel pain": "heel pain",
-    "morning foot pain": "worse in morning",
-
-    # Scabies
-    "intense itching": "intense itching",
-    "mite rash": "rash",
-    "burrow marks": "burrow tracks",
-
-    # Eczema
-    "red patches": "red patches",
-    "skin dryness": "dry skin",
-    "cracked skin": "cracking",
-
-     # Bronchitis
-    "cough": "cough",
-    "wheezing": "wheezing",
-    "mucus": "mucus",
-
-    # Influenza
-    "muscle aches": "muscle aches",
-    "body ache": "muscle aches",
-
-    # Heat Stroke
-    "high temperature": "high body temp",
-    "dry skin": "dry skin",
-    "rapid heartbeat": "rapid pulse",
-
-    # Food Poisoning
-    "stomach cramps": "abdominal cramps",
-
-    # Lactose Intolerance
-    "milk allergy": "lactose intolerance",
-    
-
-    # IBS
-    "constipation": "constipation",
-    "gut pain": "abdominal pain",
-
-    # Seasonal Allergies
-    "hay fever": "seasonal allergies",
-    "runny nose": "runny nose",
-
-    # Depression
-    "low mood": "low mood",
-    "loss of interest": "low mood",
-    "sadness": "low mood",
-    "appetite loss": "appetite changes",
-
-    # Anxiety
-    "worry": "worry",
-    "nervousness": "restlessness",
-    "tight chest": "muscle tension",
-
-    # Menstrual Cramps
-    "period pain": "lower abdominal pain",
-    "cramps": "lower abdominal pain",
-
-    # Dyspepsia
-    "indigestion": "upper abdominal discomfort",
-    "burping": "burping",
-    "early fullness": "early satiety",
-
-    # Sciatica
-    "leg pain": "leg tingling",
-    "back pain": "lower back pain",
-    "nerve pain": "leg tingling",
-
-    # Constipation
-    "hard stools": "hard stools",
-    "difficulty pooping": "straining",
-
-    # Tonsillitis
-    "pain swallowing": "difficulty swallowing",
-    "swollen tonsils": "swollen tonsils",
-
-    # Ringworm
-    "fungal rash": "itchy ring-shaped rash",
-    "scaly rash": "scaling",
-    "red ring": "redness",
-
-    # ==================== Others ====================
-    "passed out": "syncope",
-    "fainting": "syncope",
-    "night sweats": "sweating",
-    "sweating a lot": "sweating",
-    "sun exposure": "heat exhaustion",
-    "heatstroke": "heat exhaustion",
-    "overheated": "heat exhaustion",
-
+    "lower back pain": "lower back pain"
 }
-
 
 modifiers = [
     "constant", "throbbing", "sharp", "mild", "severe", "intermittent",

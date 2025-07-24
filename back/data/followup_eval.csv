@@ -1,0 +1,23 @@
+Input,Expected_Followups,Matched_Followups
+"I have a throbbing headache, nausea, and am very sensitive to light.",12,6
+I've developed an itchy rash with small blisters and a fever.,12,12
+"I have heartburn and acid regurgitation, especially after I eat.",8,8
+"My symptoms are a runny nose, a sore throat, and I keep sneezing.",12,12
+I'm experiencing joint pain and stiffness in my knees.,8,6
+I have a painful urination and a frequent urge to go.,8,0
+I have pimples and blackheads on my face.,8,8
+"I feel very tired, have gained weight, and can't stand the cold.",12,5
+"I have sudden joint pain in my big toe, with swelling and redness.",12,10
+"I have a fever and severe joint pain, especially in my wrists and ankles.",8,8
+My vision gets all fuzzy sometimes.,4,0
+i have a pounding hedache and feel nauseus,8,0
+"After our trip to the water park, my son's eye is all red and gunky.",8,0
+"i can't stop coughing, its been going on for days",4,4
+It feels like a tight band around my head.,4,0
+"I don't know, I just don't feel good.",3,0
+"My throat is scratchy and my nose is runny, but I don't have a fever.",8,2
+"I have a bad sore throat and a high fever, and my whole body aches.",12,9
+I'm feeling chest pain that gets worse when I lie down.,6,4
+"My head hurts, I'm sneezing, and I have a low-grade fever.",12,10
+The main issue is an itchy rash. No fever or other symptoms.,5,4
+I'm so tired all the time and my muscles just ache. I don't have a fever though.,9,5

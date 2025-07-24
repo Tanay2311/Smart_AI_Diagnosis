@@ -1,0 +1,23 @@
+Input,TP,FP,FN,Extracted,Expected
+"I have a throbbing headache, nausea, and...",1,2,2,"['headache', 'nausea', 'photophobia']","['throbbing headache', 'nausea', 'light sensitivity']"
+I've developed an itchy rash with small ...,3,1,0,"['blisters', 'fever', 'itchy rash', 'rash']","['blisters', 'fever', 'itchy rash']"
+"I have heartburn and acid regurgitation,...",2,0,0,"['heartburn', 'acid regurgitation']","['heartburn', 'acid regurgitation']"
+"My symptoms are a runny nose, a sore thr...",3,0,0,"['sneezing', 'runny nose', 'sore throat']","['sneezing', 'runny nose', 'sore throat']"
+I'm experiencing joint pain and stiffnes...,1,1,1,"['joint pain', 'pain']","['joint pain', 'stiffness']"
+I have a painful urination and a frequen...,1,0,1,['painful urination'],"['painful urination', 'frequent urge']"
+I have pimples and blackheads on my face...,2,0,0,"['pimples', 'blackheads']","['pimples', 'blackheads']"
+"I feel very tired, have gained weight, a...",1,0,2,['fatigue'],"['fatigue', 'cold intolerance', 'weight gain']"
+"I have sudden joint pain in my big toe, ...",3,1,0,"['joint pain', 'sudden joint pain', 'redness', 'swelling']","['joint pain', 'redness', 'swelling']"
+"I have a fever and severe joint pain, es...",2,1,0,"['fever', 'joint pain', 'pain']","['fever', 'joint pain']"
+My vision gets all fuzzy sometimes....,0,0,1,[],['blurred vision']
+i have a pounding hedache and feel nause...,0,1,2,['hedache'],"['headache', 'nausea']"
+"After our trip to the water park, my son...",0,0,2,[],"['red eye', 'discharge']"
+"i can't stop coughing, its been going on...",1,0,0,['cough'],['cough']
+It feels like a tight band around my hea...,0,0,1,[],['headache']
+"I don't know, I just don't feel good....",0,0,0,[],[]
+My throat is scratchy and my nose is run...,0,3,2,"['fever', 'throat', 'scratchy']","['runny nose', 'sore throat']"
+I have a bad sore throat and a high feve...,2,2,1,"['fever', 'sore throat', 'bad sore throat', 'aches']","['fever', 'muscle aches', 'sore throat']"
+I'm feeling chest pain that gets worse w...,1,0,0,['chest pain'],['chest pain']
+"My head hurts, I'm sneezing, and I have ...",2,0,1,"['sneezing', 'fever']","['sneezing', 'fever', 'headache']"
+The main issue is an itchy rash. No feve...,1,2,0,"['fever', 'itchy rash', 'rash']",['itchy rash']
+I'm so tired all the time and my muscles...,1,2,1,"['ache', 'fever', 'fatigue']","['muscle aches', 'fatigue']"

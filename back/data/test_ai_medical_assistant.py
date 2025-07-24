@@ -6,7 +6,7 @@ from rapidfuzz import fuzz
 from collections import Counter
 
 # Load test cases
-df = pd.read_csv("ai_medical_assistant_test_cases.csv")
+df = pd.read_csv("testing_v2.csv")
 
 # Helpers
 def normalize(sym_str):
@@ -124,3 +124,90 @@ for sym, count in Counter(fn_symptoms).most_common(5):
 # === Save Results ===
 pd.DataFrame(symptom_stats).to_csv("symptom_eval_detailed.csv", index=False)
 pd.DataFrame(followup_accuracy).to_csv("followup_eval.csv", index=False)
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set seaborn style
+sns.set(style="whitegrid")
+
+# === 1. Bar Chart for Precision, Recall, F1 ===
+# Shows the overall effectiveness of symptom extraction
+plt.figure(figsize=(6, 4))
+metrics = [prec, rec, f1]
+labels = ["Precision", "Recall", "F1 Score"]
+sns.barplot(x=labels, y=metrics, palette="Blues_d")
+plt.title("Symptom Extraction Metrics")
+plt.ylim(0, 1.05)
+plt.ylabel("Score")
+for i, val in enumerate(metrics):
+    plt.text(i, val + 0.02, f"{val:.2f}", ha='center')
+plt.tight_layout()
+plt.savefig("symptom_metrics_bar_chart.png")
+print("✅ Saved: symptom_metrics_bar_chart.png")
+plt.show()
+
+# === 2. Latency per Case ===
+# Visualizes how long each test case took to process (for performance evaluation)
+plt.figure(figsize=(10, 4))
+sns.lineplot(x=list(range(1, len(latency_logs)+1)), y=latency_logs, marker="o", color="purple")
+plt.title("Latency per Sample")
+plt.xlabel("Test Case #")
+plt.ylabel("Latency (seconds)")
+plt.tight_layout()
+plt.savefig("latency_per_case.png")
+print("✅ Saved: latency_per_case.png")
+plt.show()
+
+# === 3. TP / FP / FN Bar Chart per Case ===
+# Shows true positives, false positives, and false negatives for each input
+df_stats = pd.DataFrame(symptom_stats)
+plt.figure(figsize=(12, 6))
+df_stats_melted = df_stats[["Input", "TP", "FP", "FN"]].melt(id_vars="Input", var_name="Metric", value_name="Count")
+sns.barplot(data=df_stats_melted, x="Input", y="Count", hue="Metric")
+plt.title("True Positives, False Positives, False Negatives per Case")
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.savefig("tp_fp_fn_per_case.png")
+print("✅ Saved: tp_fp_fn_per_case.png")
+plt.show()
+
+# === 4. Follow-up Match Ratio ===
+# Measures how well follow-up questions were matched (value between 0 and 1)
+df_followup = pd.DataFrame(followup_accuracy)
+df_followup["Match_Ratio"] = df_followup["Matched_Followups"] / df_followup["Expected_Followups"].replace(0, 1)
+plt.figure(figsize=(10, 4))
+sns.barplot(x=list(range(1, len(df_followup)+1)), y="Match_Ratio", data=df_followup, color="green")
+plt.title("Follow-up Match Accuracy per Case")
+plt.xlabel("Test Case #")
+plt.ylabel("Match Ratio")
+plt.ylim(0, 1.05)
+plt.tight_layout()
+plt.savefig("followup_match_ratio.png")
+print("✅ Saved: followup_match_ratio.png")
+plt.show()
+
+# === 5. Top 5 False Positives ===
+# These are symptoms predicted but not expected – helps understand over-prediction
+fp_df = pd.DataFrame(Counter(fp_symptoms).most_common(5), columns=["Symptom", "Count"])
+plt.figure(figsize=(6, 4))
+sns.barplot(data=fp_df, x="Symptom", y="Count", palette="Reds_r")
+plt.title("Top 5 False Positives")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig("top_false_positives.png")
+print("✅ Saved: top_false_positives.png")
+plt.show()
+
+# === 6. Top 5 False Negatives ===
+# These are symptoms that were expected but not predicted – helps identify blind spots
+fn_df = pd.DataFrame(Counter(fn_symptoms).most_common(5), columns=["Symptom", "Count"])
+plt.figure(figsize=(6, 4))
+sns.barplot(data=fn_df, x="Symptom", y="Count", palette="Greens_r")
+plt.title("Top 5 False Negatives")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig("top_false_negatives.png")
+print("✅ Saved: top_false_negatives.png")
+plt.show()
+    
