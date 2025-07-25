@@ -43,6 +43,11 @@ class ChatRequest(BaseModel):
     session_id: str
     messages: List[ChatMessage]
 
+class FollowUpRequest(BaseModel):
+    symptoms: List[str]
+
+
+
 # -------------------- Endpoints --------------------
 @app.get("/")
 def root():
@@ -53,10 +58,11 @@ def extract(payload: SymptomInput):
     extracted = extract_symptoms(payload.text)
     return {"extracted_symptoms": extracted}
 
+
 @app.post("/get_followups")
-def get_followups(symptoms: List[str] = Body(...)):
+def get_followups(request: FollowUpRequest):
     result = {}
-    for symptom in symptoms:
+    for symptom in request.symptoms:
         qs = follow_up_map.get(symptom.lower(), [])
         result[symptom] = [q for q in qs if isinstance(q, str) and q.strip()]
     return result
@@ -64,7 +70,7 @@ def get_followups(symptoms: List[str] = Body(...)):
 @app.post("/diagnose")
 def diagnose(payload: DiagnosisRequest):
     print("🔍 Received diagnosis request:", payload)
-    extracted = extract_symptoms(payload.symptoms)
+    extracted = payload.symptoms if isinstance(payload.symptoms, list) else extract_symptoms(payload.symptoms)
     result = generate_diagnosis(
         extracted,
         payload.followup_answers,
@@ -103,53 +109,27 @@ def get_condition_info(query: ConditionQuery):
 def list_routes():
     return [route.path for route in app.routes]
 
-from chatbot import query_gemini_from_messages, reset_session_memory
 
- 
-class ChatMessage(BaseModel):
-
-    role: str
-
-    content: str
- 
-class ChatRequest(BaseModel):
-
-    session_id: str
-
-    messages: List[ChatMessage]
- 
 @app.post("/chat_llm")
-
 def chat_with_llm(chat: ChatRequest):
 
     print("📥 Incoming chat payload:", chat)
-
     try:
-
         messages = [{"role": msg.role, "content": msg.content} for msg in chat.messages]
-
         reply_text = query_gemini_from_messages(messages, chat.session_id)
-
         return {"reply": reply_text}
 
     except Exception as e:
-
         print("⚠️ Error in Gemini chat:", e)
-
         return JSONResponse(status_code=500, content={"error": "LLM processing failed."})
  
 @app.post("/reset_session")
 
 def reset(chat: dict = Body(...)):
-
     session_id = chat.get("session_id")
-
     if not session_id:
-
         return JSONResponse(status_code=400, content={"error": "Missing session_id"})
-
     reset_session_memory(session_id)
-
     return {"message": f"Session '{session_id}' reset successfully."}
 
  

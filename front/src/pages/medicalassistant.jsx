@@ -13,6 +13,7 @@ function MedicalAssistant() {
   const [symptomText, setSymptomText] = useState("");
   const [step, setStep] = useState("input");
   const [extractedSymptoms, setExtractedSymptoms] = useState([]);
+  const [addedSymptoms, setAddedSymptoms] = useState([]);
   const [followUpQA, setFollowUpQA] = useState({});
   const [extraNotes, setExtraNotes] = useState("");
   const [diagnosisResult, setDiagnosisResult] = useState(null);
@@ -44,6 +45,20 @@ function MedicalAssistant() {
     setStep("input");
   };
 
+  const handleAddSymptom = (symptom) => {
+    if (!addedSymptoms.includes(symptom.toLowerCase())) {
+      setAddedSymptoms([...addedSymptoms, symptom.toLowerCase()]);
+    }
+  };
+
+  const handleRemoveSymptom = (symptom) => {
+    setAddedSymptoms(addedSymptoms.filter((s) => s !== symptom.toLowerCase()));
+  };
+
+  const allSymptoms = [
+    ...new Set([...extractedSymptoms, ...addedSymptoms]),
+  ].map((s) => s.toLowerCase().trim());
+
   const demographics =
     JSON.parse(localStorage.getItem("user_demographics")) || {};
   const userName = demographics.name || "there";
@@ -53,7 +68,7 @@ function MedicalAssistant() {
     setExtraNotes(notes);
 
     const payload = {
-      symptoms: symptomText,
+      symptoms:allSymptoms.join(", "),
       followup_answers: qaData,
       extra_input: notes,
       name: demographics.name || null,
@@ -84,7 +99,7 @@ function MedicalAssistant() {
   };
 
   return (
-  <div className="min-h-screen bg-blue-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-blue-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 shadow-xl rounded-2xl p-8 space-y-6 border border-gray-200 dark:border-gray-700">
         <h1 className="text-3xl font-bold text-center text-purple-700 dark:text-purple-400">
           🩺 Smart AI Medical Assistant
@@ -114,7 +129,9 @@ function MedicalAssistant() {
 
           {step === "extracted" && (
             <ExtractedSymptoms
-              symptoms={extractedSymptoms}
+              symptoms={[...new Set([...extractedSymptoms, ...addedSymptoms])]} // merged
+              onAddSymptom={handleAddSymptom}
+              onRemoveSymptom={handleRemoveSymptom}
               onContinue={handleContinueToFollowUp}
               onBack={handleBackToSymptoms}
             />
@@ -122,7 +139,7 @@ function MedicalAssistant() {
 
           {step === "followup" && (
             <FollowUpChat
-              symptoms={extractedSymptoms}
+              symptoms={allSymptoms}
               onComplete={handleFollowUpComplete}
               onBack={handleBackToExtracted}
               onRestartFollowUp={() => setFollowUpQA({})}
@@ -131,7 +148,7 @@ function MedicalAssistant() {
 
           {step === "diagnosis" && diagnosisResult && (
             <DiagnosisResult
-              symptomText={symptomText}
+              symptomText={allSymptoms.join(', ')}
               followUpAnswers={followUpQA}
               extraNotes={extraNotes}
               onRestart={handleRestart}

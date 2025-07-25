@@ -4,7 +4,12 @@ import { toast } from "react-hot-toast";
 
 const API_URL = "http://127.0.0.1:8000";
 
-const onsetOptions = ["Today", "Yesterday", "Couple of days ago", "More than a week ago"];
+const onsetOptions = [
+  "Today",
+  "Yesterday",
+  "Couple of days ago",
+  "More than a week ago",
+];
 const severityLevels = ["1", "2", "3", "4", "5"];
 const patternOptions = ["Constant", "Comes and goes"];
 
@@ -21,7 +26,11 @@ export default function FollowUpChat({ symptoms, onComplete, onBack }) {
   useEffect(() => {
     const fetchFollowUps = async () => {
       try {
-        const response = await axios.post(`${API_URL}/get_followups`, symptoms);
+        const cleanedSymptoms = symptoms.map((s) => s.toLowerCase().trim());
+        const response = await axios.post(`${API_URL}/get_followups`, {
+          symptoms: cleanedSymptoms,
+        });
+
         setFollowUps(response.data);
       } catch (err) {
         console.error("Failed to fetch follow-up questions:", err);
@@ -57,7 +66,8 @@ export default function FollowUpChat({ symptoms, onComplete, onBack }) {
   };
 
   const currentSymptom = symptoms[currentSymptomIndex];
-  const currentQuestion = followUps[currentSymptom]?.[currentQuestionIndex] || "";
+  const currentQuestion =
+    followUps[currentSymptom]?.[currentQuestionIndex] || "";
 
   const baseInputStyles =
     "w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400";
@@ -137,7 +147,9 @@ export default function FollowUpChat({ symptoms, onComplete, onBack }) {
         <>
           <p className="text-base font-medium mb-2">
             Symptom:{" "}
-            <span className="text-indigo-700 dark:text-indigo-400">{currentSymptom}</span>
+            <span className="text-indigo-700 dark:text-indigo-400">
+              {currentSymptom}
+            </span>
           </p>
           <p className="mb-4">{currentQuestion}</p>
 
@@ -166,7 +178,9 @@ export default function FollowUpChat({ symptoms, onComplete, onBack }) {
         </>
       ) : (
         <>
-          <p className="mb-4 font-medium">📝 Anything else you'd like to mention?</p>
+          <p className="mb-4 font-medium">
+            📝 Anything else you'd like to mention?
+          </p>
           <textarea
             rows={3}
             value={extraInput}

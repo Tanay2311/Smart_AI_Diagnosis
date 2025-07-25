@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "lottie-react": "^2.4.1",
-    "lucide-react": "^0.525.0",
-    "uuid": "^11.1.0"
-  }
-}
