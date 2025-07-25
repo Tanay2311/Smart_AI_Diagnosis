@@ -18,3 +18,4 @@ rapidfuzz
 chromadb
 spacy
 scikit-learn
+langchain-huggingface
