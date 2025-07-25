@@ -17,4 +17,4 @@ python-multipart
 rapidfuzz
 chromadb
 spacy
-sklearn
+scikit-learn
