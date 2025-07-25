@@ -16,3 +16,5 @@ matplotlib
 python-multipart
 rapidfuzz
 chromadb
+spacy
+sklearn
