@@ -18,7 +18,7 @@ export default function SymptomInputForm({ onSubmit }) {
       className="w-full max-w-md mx-auto mt-10 px-4"
     >
       <label className="block mb-2 text-lg font-semibold text-blue-900 dark:text-blue-200">
-        Describe your symptoms:
+        Describe your symptoms specifically:
       </label>
       <input
         type="text"

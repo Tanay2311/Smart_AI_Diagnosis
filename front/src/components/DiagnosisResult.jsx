@@ -103,7 +103,7 @@ export default function DiagnosisResult({
           onClick={handleSeeNextSteps}
           className="mt-6 px-6 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg transition font-semibold"
         >
-          📋 What Should I Do Now?
+          📋 What Should You Do Now?
         </button>
       )}
     </div>

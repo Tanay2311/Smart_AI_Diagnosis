@@ -6,7 +6,6 @@ import rehypeRaw from "rehype-raw";
 import ProgressTracker from "../components/ProgressTracker";
 import remarkGfm from "remark-gfm";
 
-// ✅ Button component
 function Button({ children, onClick, variant = "primary" }) {
   const baseStyle = "px-4 py-2 rounded font-semibold transition-colors";
   const primaryStyle =
